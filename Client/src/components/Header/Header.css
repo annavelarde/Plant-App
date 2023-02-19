@@ -1,0 +1,48 @@
+*{padding: 0; margin: 0; box-sizing: border-box;}
+
+.header {
+	background-image: url("/images/loginbackground.jpg");
+	opacity: 0.9;
+	text-align: center;
+	width: 100%;
+	height: 30%;
+	position: fixed;
+
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0 0 20% 30% / 30%;
+}
+.title-header{
+  font-size: 80px;
+	margin-bottom: 0.1px;
+  color:rgba(214, 211, 211, 0.978) 
+}
+
+header .overlay{
+	width: 100%;
+	height: auto;
+	padding: 70px;
+	color: rgb(69, 69, 68);
+	text-shadow: 1px 1px 1px #333;
+	
+}
+
+.button-header {
+	border: none;
+	outline: none;
+	padding: 15px 60px;
+	border-radius: 50px;
+	color: rgb(255, 255, 255);
+  background-color: rgb(181, 188, 164);
+	margin-bottom: 70px;
+	box-shadow: 0 3px 20px 0 #0000003b;
+}
+
+button:hover{
+	cursor: pointer;
+}
+
+.button-header-pad{
+	padding-top: 30px;
+}

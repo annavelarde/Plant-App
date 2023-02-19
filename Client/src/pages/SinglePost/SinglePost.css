@@ -1,0 +1,13 @@
+.cardSinglePost{
+    font-family: Montserrat, sans-serif;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	min-height:30vh;
+	margin: 30px;
+}
+.imageSinglePost{
+    border-radius: 5%;
+}

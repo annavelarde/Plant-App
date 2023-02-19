@@ -1,0 +1,54 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-weight: 500;
+  background-color: #889c7b;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+}
+
+.nav__projectName {
+  color:rgba(214, 211, 211, 0.978) ;
+  text-decoration: none;
+  font-size: 40px;
+}
+.nav__projectName:hover {
+  color:#495643;  
+}
+
+.authLink {
+  color:#495643;  
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.authLink + .authLink {
+  padding: 1em;
+}
+
+.authLink:hover {
+  color: #4b6043;
+}
+.nav__authLinks {
+  display: flex;
+  align-items: center;
+}
+.nav-logoutbtn {
+  background: linear-gradient(to right, #bcc4b5, #9da19c);
+  border: none;
+  border-radius: 3px;
+  color:#495643;  
+  padding: 0.8em 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: inherit;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.nav-logoutbtn:hover {
+  background: linear-gradient(to right, #a68d52, #e65922);
+}

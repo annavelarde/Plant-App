@@ -9,7 +9,7 @@ function SinglePost({ post }) {
   // console.log(" 👉 👉 / SinglePost / post", post);
 
   const { postId } = useParams();
-  // console.log(" 👉 👉 / SinglePost / postId", postId);
+  console.log(" 👉 👉 / SinglePost / postId", postId);
 
   const [singlePost, setSinglePost] = useState({});
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ function SinglePost({ post }) {
       />
       <h3>{singlePost.title}</h3>
       <p>{singlePost.description}</p>
-      <Link key={singlePost._id} to={`posts/${postId}/edit`}>
+      <Link to={`/posts/edit/${postId}`}>
         <button type="button" className="primary btn btn-secondary mb-4">
           Edit
         </button>

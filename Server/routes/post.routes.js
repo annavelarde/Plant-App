@@ -88,7 +88,7 @@ router.get("/:id", isLoggedIn, async (req, res) => {
 // });
 
 //UPDATING Single POST//
-router.put("/:postId/edit", async (req, res) => {
+router.put("edit/:postId", async (req, res) => {
   try {
     const { postId } = req.params;
     // console.log(" 👉 👉 / router.put / params", params);

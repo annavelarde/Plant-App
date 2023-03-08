@@ -1,0 +1,17 @@
+
+body {
+    font-family: "Oxygen", sans-serif;
+    color: #050505;
+  } 
+
+  .card_content {
+    display: flex;
+    justify-content:center
+    ;
+    flex-direction: column;
+    align-items:center;
+    /* max-height: 600px;
+    overflow-y: scroll; */
+
+  }
+  

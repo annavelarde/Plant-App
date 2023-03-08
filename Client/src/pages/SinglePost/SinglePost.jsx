@@ -5,11 +5,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import * as PATHS from "../../utils/paths";
 import "./SinglePost.css";
 
-function SinglePost({ post }) {
-  // console.log(" 👉 👉 / SinglePost / post", post);
-
+function SinglePost() {
   const { postId } = useParams();
-  // console.log(" 👉 👉 / SinglePost / postId", postId);
+  console.log(" 👉 👉 / SinglePost / postId", postId);
 
   const [singlePost, setSinglePost] = useState({});
   const navigate = useNavigate();
@@ -17,7 +15,7 @@ function SinglePost({ post }) {
   useEffect(() => {
     getSinglePost(postId)
       .then((res) => {
-        console.log(" 👉 👉 / useEffect / res", res.data);
+        // console.log(" 👉 👉 / useEffect / res", res.data);
         setSinglePost(res.data);
       })
       .catch((err) => {
@@ -28,7 +26,7 @@ function SinglePost({ post }) {
   function handleDeletePost() {
     deleteSinglePost(postId)
       .then((res) => {
-        console.log(" 👉 👉 / .then / e", res);
+        // console.log(" 👉 👉 / .then / e", res);
         navigate(PATHS.HOME_PAGE);
       })
       .catch((err) => {
@@ -46,7 +44,7 @@ function SinglePost({ post }) {
       />
       <h3>{singlePost.title}</h3>
       <p>{singlePost.description}</p>
-      <Link key={singlePost._id} to={`posts/${postId}/edit`}>
+      <Link to={`/posts/edit/${postId}`}>
         <button type="button" className="primary btn btn-secondary mb-4">
           Edit
         </button>

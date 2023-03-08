@@ -3,7 +3,7 @@ export const HOME_PAGE = "/";
 export const SIGNUP_PAGE = "/auth/signup";
 export const LOGIN_PAGE = "/auth/login";
 export const SINGLE_POST_PAGE = "/posts/:postId";
-export const SINGLE_POST_PAGE_EDIT = "/posts/:postId/edit";
+export const SINGLE_POST_PAGE_EDIT = "/posts/edit/:postId/";
 
 // PROTECTED PAGES
 export const ACCOUNT_PAGE = "/account";

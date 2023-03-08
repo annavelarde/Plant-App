@@ -62,55 +62,57 @@ function CreatePost() {
 
   return (
     <div className="container">
-      {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
-      <form method="POST" onSubmit={handleSubmit}>
-        <div>
-          <h1 className="title-homepage">Create a Post</h1>
-        </div>
-        <div>
-          <label>
-            <input type="file" name="post-image" onChange={handleFileInput} />
-          </label>
-        </div>
-        <div>
-          <label className="form-label" />
-        </div>
-        <div>
-          <label className="form-label">Title Post*</label>
-          <input
-            type="text"
-            onChange={handleNormalInput}
-            placeholder="title"
-            name="title"
-            value={title}
-          />
-        </div>
-        <div>
-          <label>Add text...*</label>
-          <textarea
-            name="description"
-            placeholder="share your thoughts"
-            type="text"
-            id="inputPost"
-            cols="30"
-            rows="10"
-            onChange={handleNormalInput}
-          ></textarea>
-        </div>
-        {/* <div>
+      <div className="card_content">
+        {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
+        <form method="POST" onSubmit={handleSubmit}>
+          <div>
+            <h1 className="title-homepage">Create a Post</h1>
+          </div>
+          <div>
+            <label>
+              <input type="file" name="post-image" onChange={handleFileInput} />
+            </label>
+          </div>
+          <div>
+            <label className="form-label" />
+          </div>
+          <div>
+            <label className="form-label">Title Post*</label>
+            <input
+              type="text"
+              onChange={handleNormalInput}
+              placeholder="title"
+              name="title"
+              value={title}
+            />
+          </div>
+          <div>
+            <label>Add text...*</label>
+            <textarea
+              name="description"
+              placeholder="share your thoughts"
+              type="text"
+              id="inputPost"
+              cols="30"
+              rows="10"
+              onChange={handleNormalInput}
+            ></textarea>
+          </div>
+          {/* <div>
           <img height={"300px"} src={imageUrl} alt="" />
           {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
           <input type="file" onChange={handleFileInput} />
         </div> */}
-        <div className="btn-group">
-          <button className="w-100 btn btn-lg btn-primary mb-3" type="submit">
-            Post it
-          </button>
-          <button className="w-100 btn btn-lg btn-primary mb-3" type="submit">
-            Go Back
-          </button>
-        </div>
-      </form>
+          <div className="btn-group">
+            <button className="w-100 btn btn-lg btn-primary mb-3" type="submit">
+              Post it
+            </button>
+            <button className="w-100 btn btn-lg btn-primary mb-3" type="submit">
+              Go Back
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

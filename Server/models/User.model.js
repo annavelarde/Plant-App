@@ -19,7 +19,7 @@ const userSchema = new Schema(
     profileImage: {
       type: String,
       default:
-        "https://github.com/annavelarde/plant-app/blob/dev/Client/public/images/anna%20velarde%20small%20copy.jpg",
+        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngall.com%2Fprofile-png&psig=AOvVaw1hvUH5teCgvn14z5HikcBt&ust=1678233195484000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMiiroTAyP0CFQAAAAAdAAAAABAE",
     },
   },
   {

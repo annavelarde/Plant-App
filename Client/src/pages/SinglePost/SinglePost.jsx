@@ -5,9 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import * as PATHS from "../../utils/paths";
 import "./SinglePost.css";
 
-function SinglePost({ post }) {
-  // console.log(" 👉 👉 / SinglePost / post", post);
-
+function SinglePost() {
   const { postId } = useParams();
   console.log(" 👉 👉 / SinglePost / postId", postId);
 
@@ -17,7 +15,7 @@ function SinglePost({ post }) {
   useEffect(() => {
     getSinglePost(postId)
       .then((res) => {
-        console.log(" 👉 👉 / useEffect / res", res.data);
+        // console.log(" 👉 👉 / useEffect / res", res.data);
         setSinglePost(res.data);
       })
       .catch((err) => {
@@ -28,7 +26,7 @@ function SinglePost({ post }) {
   function handleDeletePost() {
     deleteSinglePost(postId)
       .then((res) => {
-        console.log(" 👉 👉 / .then / e", res);
+        // console.log(" 👉 👉 / .then / e", res);
         navigate(PATHS.HOME_PAGE);
       })
       .catch((err) => {

@@ -18,8 +18,7 @@ const userSchema = new Schema(
     password: String,
     profileImage: {
       type: String,
-      default:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngall.com%2Fprofile-png&psig=AOvVaw1hvUH5teCgvn14z5HikcBt&ust=1678233195484000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMiiroTAyP0CFQAAAAAdAAAAABAE",
+      default: "/images/Profile-PNG-Pic.png",
     },
   },
   {

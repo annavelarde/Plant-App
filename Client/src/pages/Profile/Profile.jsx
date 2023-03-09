@@ -1,8 +1,36 @@
 import React from "react";
 import "./Profile.css";
+import { useState } from "react";
+import { deleteUser } from "../../services/userService";
+import * as PATH from "../../utils/paths";
+import { useNavigate } from "react-router-dom";
 
-export default function Profile({ user }) {
-  // console.log(user);
+export default function Profile({ user, setUser }) {
+  console.log(" 👉 👉 / Profile / setUser:", setUser);
+  console.log(" 👉 👉 / Profile / user:", user);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  function handleDeleteUser(event) {
+    event.preventDefault();
+    setIsLoading(true);
+    deleteUser(user._id)
+      .then((res) => {
+        if (!res.success) {
+          return setError(res.data);
+        }
+      })
+      .finally(() => {
+        if (error) {
+          return setIsLoading(false);
+        }
+        console.log("User was succesfull deleted");
+        navigate(PATH.HOME_PAGE);
+        return setUser(null);
+      });
+  }
+
   return (
     <div className="card-body">
       <div className="card-container">
@@ -10,7 +38,7 @@ export default function Profile({ user }) {
           className="round"
           width="35%"
           height="auto"
-          src="/images/anna velarde small copy.jpg"
+          src="/images/Profile-PNG-Pic.png"
           alt="user"
         />
         <h3>{user.username}</h3>
@@ -36,6 +64,13 @@ export default function Profile({ user }) {
           <br />
           <button className="primary btn btn-secondary mb-4">
             <a href="/profile/edit">Edit Profile</a>
+          </button>
+          <button
+            className="primary ghost btn btn-secondary mb-4"
+            type="delete"
+            onClick={handleDeleteUser}
+          >
+            Delete
           </button>
         </div>
       </div>

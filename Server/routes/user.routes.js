@@ -104,13 +104,20 @@ router.put("/edit-profile", isLoggedIn, (req, res) => {
 //delete profile
 router.delete("/:userId", isLoggedIn, async (req, res) => {
   const { userId } = req.params;
-  console.log(" 👉 👉 / router.delete / userId:", userId);
+  console.log(" 👉 👉 / router.delete / SERVERuserId:", userId);
 
   //deleting all Posts
   const userPosts = await Post.find({ author: userId });
-  const allPosts = userPosts.map((thePost) => thePost._id);
-  //   console.log(" 👉 👉 / router.delete / allPosts:", allPosts);
-  //   console.log(" 👉 👉 / router.delete / userPosts:", userPosts);
+  const allPosts = await userPosts.map((thePost) => thePost._id);
+  console.log(" 👉 👉 / router.delete / userPosts:", userPosts);
+  console.log(" 👉 👉 / router.delete / allPosts:", allPosts);
+
+  // -----de juancarlos
+  // const userPosts = await (
+  //   await Post.find({ author: userId })
+  // ).map((post) => post._id);
+  // console.log(" 👉 👉 / router.delete / userPosts:", userPosts);
+  // ---termina juancarlos
 
   //deleting Session
   const userSessionId = req.headers.authorization;
@@ -118,21 +125,23 @@ router.delete("/:userId", isLoggedIn, async (req, res) => {
 
   //deleting User
   const deleteUser = await Session.findById(userSessionId).populate("user");
-  //   console.log(" 👉 👉 / router.delete / deleteUser:", deleteUser);
+  console.log(" 👉 👉 / router.delete / aqyuuuuuiiiiiiiii:", deleteUser);
+
+  console.log(" 👉 👉 / router.delete / userId:", userId);
 
   if (deleteUser.user._id.toString() !== userId) {
-    // console.log("We are here--", deleteUser.user._id.toString());
+    console.log("We are here--", deleteUser.user._id.toString());
     return res.status(404).json({
-      errorMessage: "Server Error deleting post",
+      errorMessage: "you are not allow to perform this action",
     });
   }
 
   await Promise.all([
     Post.deleteMany({ _id: { $in: allPosts } }),
     User.findByIdAndDelete(userId),
-    Session.findByIdAndDelete(req.headers.authorization),
+    Session.findByIdAndDelete(userSessionId),
   ]);
-  return res.status(200).json({ message: "Deleted " });
+  return res.status(200).json({ message: "deletion succesfully" });
 });
 
 module.exports = router;

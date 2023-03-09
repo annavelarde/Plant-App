@@ -62,7 +62,13 @@ function CreatePost() {
 
   return (
     <div className="container">
+      <img
+        className="backgroundImagePost"
+        src="https://imgs.search.brave.com/dN-fZSLeCiiCLXFEPielL-V5cUQjpa_YL9YXo1gKrdg/rs:fit:1200:900:1/g:ce/aHR0cHM6Ly9jLnB4/aGVyZS5jb20vcGhv/dG9zLzRlL2U2L2Jl/YXV0aWZ1bF9ibG9v/bWluZ19ibG9zc29t/X2JsdXJfYm9rZWhf/YnJpZ2h0X2Nsb3Nl/X3VwX2NvbG9yLTE1/MTQ5MjkuanBnIWQ"
+        alt=""
+      />{" "}
       <div className="card_content">
+        {" "}
         {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
         <form method="POST" onSubmit={handleSubmit}>
           <div>

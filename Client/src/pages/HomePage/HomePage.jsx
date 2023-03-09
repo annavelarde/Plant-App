@@ -5,8 +5,10 @@ import { getPosts } from "../../services/postService";
 import CardPost from "../../components/CardPost/CardPost";
 import "./HomePage.css";
 
-function HomePage() {
+function HomePage({ user }) {
+  console.log(" 👉 👉 / HomePage / user:", user);
   const [posts, setPosts] = useState([]);
+  // console.log(" 👉 👉 / HomePage / posts:", posts);
 
   useEffect(() => {
     getPosts().then((dbPosts) => {
@@ -21,6 +23,7 @@ function HomePage() {
   return (
     <div className="homePageContainer">
       <Header />
+      <h1>Blog Post</h1>
       {posts.map((post) => (
         <CardPost key={post._id} post={post} />
       ))}

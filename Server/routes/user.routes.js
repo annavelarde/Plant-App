@@ -132,7 +132,7 @@ router.delete("/:userId", isLoggedIn, async (req, res) => {
     User.findByIdAndDelete(userId),
     Session.findByIdAndDelete(req.headers.authorization),
   ]);
-  return res.status(200).json({ message: "Deletion succesful" });
+  return res.status(200).json({ message: "Deleted " });
 });
 
 module.exports = router;

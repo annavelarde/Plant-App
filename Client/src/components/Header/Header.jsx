@@ -4,9 +4,9 @@ import "./Header.css";
 function Header() {
   return (
     <div className="overlay header">
-      <h1 className="title-header">Learning more about all types of plants</h1>
-      <div className="button-header-pad">
-        <button className="button-header">READ MORE</button>
+      <div className="header">
+        <h1 className="title">We care about the plants.</h1>
+        <h4 className="subtitle">Indoor & House Plant </h4>
       </div>
     </div>
   );

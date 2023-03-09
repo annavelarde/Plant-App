@@ -3,8 +3,9 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background:#889c7b;;  
-  color:#495643;  
+  /* background:#889c7b; */
+  background-color: #6c7a63;
+  color:#e5eae3;  
   text-align: center;
   font-family: 'Lato', sans-serif; 
   height: 3rem;

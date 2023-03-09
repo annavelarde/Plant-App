@@ -3,7 +3,7 @@ import "./CardPost.css";
 import { Link } from "react-router-dom";
 
 export default function CardPost({ post }) {
-  // console.log(" 👉 👉 / CardPost / post", post);
+  console.log(" 👉 👉 / CardPost / post:", post);
   return (
     <div className="a-box">
       <div className="img-container">
@@ -14,8 +14,15 @@ export default function CardPost({ post }) {
         </div>
       </div>
       <div className="text-container">
-        <h3>{post.title}</h3>
-        <div>{post.description}</div>
+        <div>
+          <h4>Title.</h4>
+          <p>{post.title}</p>
+        </div>
+        <div>
+          <h4>Description.</h4>
+          <p>{post.description}</p>
+        </div>
+
         <Link to={`posts/${post._id}`} className="authLink ">
           <button className="primary btn btn-secondary mb-4">View More</button>
         </Link>

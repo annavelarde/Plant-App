@@ -9,7 +9,7 @@ const Navbar = (props) => {
   return (
     <nav className="nav__authLinks">
       <Link to={PATHS.HOME_PAGE} className="nav__projectName">
-        🌱 Plant App
+        🌼 plant weblog
       </Link>
       <div>
         {props.user ? (

@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
+// const ObjectId = Schema.Type.ObjectId;
 
-const postSchema = new mongoose.Schema(
+const postSchema = new Schema(
   {
     imageUrl: {
       type: String,
@@ -11,16 +12,19 @@ const postSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User", //comes from the User Model
+    },
     description: {
       type: String,
       trim: true,
       required: true,
     },
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   },
   { timestamps: true }
 );
 
-const Post = mongoose.model("Post", postSchema);
+const Post = model("Post", postSchema);
 
 module.exports = Post;

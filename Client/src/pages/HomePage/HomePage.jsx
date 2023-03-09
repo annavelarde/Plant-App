@@ -13,7 +13,7 @@ function HomePage() {
       if (!dbPosts.success) {
         return console.log(dbPosts.data);
       }
-      console.log("HOMEPAGE POSTs", dbPosts.data);
+      // console.log("HOMEPAGE POSTs", dbPosts.data);
       setPosts(dbPosts.data.posts);
     });
   }, []);

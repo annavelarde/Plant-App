@@ -45,6 +45,7 @@ router.post("/", isLoggedIn, upload.single("imageUrl"), (req, res) => {
     title: req.body.title,
     description: req.body.description,
     imageUrl: req.file.path,
+    author: req.user._id,
   })
     .then((createPost) => {
       // console.log(createPost);

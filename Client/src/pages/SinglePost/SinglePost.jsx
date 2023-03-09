@@ -5,9 +5,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import * as PATHS from "../../utils/paths";
 import "./SinglePost.css";
 
-function SinglePost() {
+function SinglePost(props) {
   const { postId } = useParams();
-  console.log(" 👉 👉 / SinglePost / postId", postId);
+  const { user } = props;
+
+  const userId = user._id;
+  // console.log(" 👉 👉 / SinglePost / user:", user);
+  // console.log(" 👉 👉 / SinglePost / postId", postId);
 
   const [singlePost, setSinglePost] = useState({});
   const navigate = useNavigate();
@@ -57,6 +61,9 @@ function SinglePost() {
         >
           Delete
         </button>
+      </Link>
+      <Link>
+        <button type="button">go back</button>
       </Link>
     </div>
   );

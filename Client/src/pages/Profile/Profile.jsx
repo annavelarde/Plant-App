@@ -1,14 +1,17 @@
 import React from "react";
 import "./Profile.css";
+import Loading from "../../components/Loading/Loading";
 import { useState } from "react";
 import { deleteUser } from "../../services/userService";
 import * as PATH from "../../utils/paths";
 import { useNavigate } from "react-router-dom";
 
-export default function Profile({ user, setUser }) {
-  console.log(" 👉 👉 / Profile / setUser:", setUser);
-  console.log(" 👉 👉 / Profile / user:", user);
+export default function Profile(props) {
+  const { user, setUser } = props;
 
+  // console.log(" 👉 👉 / Profile / setUser:", setUser);
+  console.log(" 👉 👉 / Profile / userID:", user._id);
+  const [error, setError] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -26,9 +29,13 @@ export default function Profile({ user, setUser }) {
           return setIsLoading(false);
         }
         console.log("User was succesfull deleted");
-        navigate(PATH.HOME_PAGE);
         return setUser(null);
       });
+    navigate(PATH.HOME_PAGE);
+  }
+
+  if (isLoading) {
+    return <Loading />;
   }
 
   return (
@@ -65,13 +72,15 @@ export default function Profile({ user, setUser }) {
           <button className="primary btn btn-secondary mb-4">
             <a href="/profile/edit">Edit Profile</a>
           </button>
-          <button
-            className="primary ghost btn btn-secondary mb-4"
-            type="delete"
-            onClick={handleDeleteUser}
-          >
-            Delete
-          </button>
+          {user._id && (
+            <button
+              className="primary ghost btn btn-secondary mb-4"
+              type="delete"
+              onClick={handleDeleteUser}
+            >
+              Delete
+            </button>
+          )}
         </div>
       </div>
     </div>

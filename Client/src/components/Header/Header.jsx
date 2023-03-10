@@ -6,7 +6,7 @@ function Header() {
     <div className="overlay header">
       <div className="header">
         <h1 className="title">We care about the plants.</h1>
-        <h4 className="subtitle">Indoor & House Plant </h4>
+        <h4 className="subtitle">Indoor & House Plants </h4>
       </div>
     </div>
   );

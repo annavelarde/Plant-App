@@ -1,25 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body {
     font-family: "Oxygen", sans-serif;
-  }
-  .main {
-    max-width: 1200px;
-    margin: 0 auto;
+    margin:0;
+    height:100%;
+    overflow:hidden;
+    background-size: 100% ;
   }
 
-  .card_content {
-    /* position: relative; */
-    /* padding: 16px 12px 32px 24px;
-    margin: 16px 8px 8px 0;
-    max-height: 290px; */
-    /* overflow-y: scroll; */
-    display: flex;
-  }
- 
+
   .backgroundImagePost{
     background-size: cover;
-	  display: flex;
-    opacity: 0.5;
-    max-width:auto;
-
+    background-repeat: no-repeat;
+    background-position: center;
+    position:absolute;
+    background-image: linear-gradient(rgba(238, 241, 237, 0.482),rgba(0, 0, 0, 0)), url('https://d.newsweek.com/en/full/1670967/plants-interior-design-indoor-garden.jpg');
+    /* background-image: linear-gradient(rgba(238, 241, 237, 0.482),rgba(0, 0, 0, 0)), url('https://jooinn.com/images/green-indoor-potted-plant-lot.jpg'); */
+    opacity: 1;
+    width:100%;
+    height:100%; 
+    /* border:5px solid rgb(0, 0, 0); */
+    box-sizing:border-box;
   }
+
+
+  .card_content  {
+    height: 58vh;
+    width: 45rem;
+    background-color: rgba(255, 255, 255, 0.13);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 45%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 50px;
+  }
+
+  .container {
+    width:100%;
+    height:100%;
+  }
+
+.card-components{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  justify-content: left;
+}
+.title-homepage{
+  padding-bottom:1%;
+}
+
+.form-label{
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+  font-size:small;
+}
+
+.btn-post{
+padding: 2%;
+}
+
+.choose-image{
+  padding-bottom:3%;
+  padding-top:3%;
+}

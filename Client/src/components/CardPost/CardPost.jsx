@@ -19,8 +19,8 @@ export default function CardPost({ post }) {
           <p>{post.title}</p>
         </div>
         <div>
-          <h4>Description.</h4>
-          <p>{post.description}</p>
+          {/* <h4>Description.</h4>
+          <p>{post.description}</p> */}
         </div>
 
         <Link to={`posts/${post._id}`} className="authLink ">

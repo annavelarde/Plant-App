@@ -23,10 +23,22 @@ function HomePage({ user }) {
   return (
     <div className="homePageContainer">
       <Header />
-      <h1>Blog Post</h1>
-      {posts.map((post) => (
-        <CardPost key={post._id} post={post} />
-      ))}
+      <div className="container-text">
+        <div>
+          <p className="title-individual-blogs">Users BLOG.</p>
+          <p className="subtitle-individual-blogs">
+            Have you found what you are looking for?{" "}
+          </p>
+        </div>
+      </div>
+      <div className="individual-posts">
+        {posts.map((post) => (
+          <CardPost key={post._id} post={post} />
+        ))}
+      </div>{" "}
+      <p className="subtitle2-individual-blogs">
+        You can also send us a message! ✉️
+      </p>
     </div>
   );
 }

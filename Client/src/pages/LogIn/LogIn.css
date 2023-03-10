@@ -5,9 +5,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* body {
-  background-color: #28253d;
-} */
+
 .background {
   width: 530px;
   height: 320px;
@@ -109,7 +107,7 @@
 }
 
 .container-login{
-  background: url("/images/loginbackground.jpg") ;
+  background: url("public/images/green-leaf-plant-18.jpg") ;
   display: flex;
   flex-direction: column;
   justify-content: center;

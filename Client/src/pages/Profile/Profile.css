@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .profile-page{
-	background: linear-gradient(rgba(123, 36, 36, 0.3),rgba(247, 247, 247, 0.7)), url('https://imgs.search.brave.com/lunXI8Xpn_d2o9DawzLoatzhE9kF5FW53uLgQcW_y40/rs:fit:910:604:1/g:ce/aHR0cHM6Ly9jMS53/YWxscGFwZXJmbGFy/ZS5jb20vcHJldmll/dy82MDUvNzgwLzg0/OC9uYXR1cmUtYmVh/dXR5LWhhcm1vbnkt/bWFrZXVwLmpwZw');
+
+	background: linear-gradient(rgb(255, 255, 255),rgba(0, 0, 0, 0.283)), url('https://jooinn.com/images/canola.-golden-fields..jpg');
+
 	height: auto;
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position:absolute;
+	
+
+    width:100%;
+    height:90%; 
+    /* border:5px solid rgb(0, 0, 0); */
+    box-sizing:border-box;
 }
 
 .card-body {

@@ -62,62 +62,75 @@ function CreatePost() {
 
   return (
     <div className="container">
-      <img
+      <div className="backgroundImagePost">
+        {/* <img
         className="backgroundImagePost"
-        src="https://imgs.search.brave.com/dN-fZSLeCiiCLXFEPielL-V5cUQjpa_YL9YXo1gKrdg/rs:fit:1200:900:1/g:ce/aHR0cHM6Ly9jLnB4/aGVyZS5jb20vcGhv/dG9zLzRlL2U2L2Jl/YXV0aWZ1bF9ibG9v/bWluZ19ibG9zc29t/X2JsdXJfYm9rZWhf/YnJpZ2h0X2Nsb3Nl/X3VwX2NvbG9yLTE1/MTQ5MjkuanBnIWQ"
-        alt=""
-      />{" "}
-      <div className="card_content">
-        {" "}
-        {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
-        <form method="POST" onSubmit={handleSubmit}>
-          <div>
-            <h1 className="title-homepage">Create a Post</h1>
-          </div>
-          <div>
-            <label>
-              <input type="file" name="post-image" onChange={handleFileInput} />
-            </label>
-          </div>
-          <div>
-            <label className="form-label" />
-          </div>
-          <div>
-            <label className="form-label">Title Post*</label>
-            <input
-              type="text"
-              onChange={handleNormalInput}
-              placeholder="title"
-              name="title"
-              value={title}
-            />
-          </div>
-          <div>
-            <label>Add text...*</label>
-            <textarea
-              name="description"
-              placeholder="share your thoughts"
-              type="text"
-              id="inputPost"
-              cols="30"
-              rows="10"
-              onChange={handleNormalInput}
-            ></textarea>
-          </div>
-          {/* <div>
-          <img height={"300px"} src={imageUrl} alt="" />
-          {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
-          <input type="file" onChange={handleFileInput} />
-        </div> */}
-          <div className="btn-group">
-            <button className="w-100 btn btn-lg btn-primary mb-3" type="submit">
-              Post it
-            </button>
-            <button className="w-100 btn btn-lg btn-primary mb-3" type="submit">
-              Go Back
-            </button>
-          </div>
-        </form>
+        src="https://d.newsweek.com/en/full/1670967/plants-interior-design-indoor-garden.jpg"
+        // src="https://www.friendsoffriends.com/app/uploads/igor-and-judith-of-urban-jungle-bloggers-explain-why-plants-became-so-important-for-our-city-homes/Freunde-von-Freunden-Igor-Josifovic-Judith-de-Graaff-6.jpg"
+        // src="/public/images/BI9A2487-1.jpeg"
+        alt="background"
+      /> */}
+        <div className="card_content">
+          <form method="POST" onSubmit={handleSubmit}>
+            <div className="card-components">
+              <h1 className="title-homepage">Create a Post</h1>
+              <label className="form-label" />
+              <div>
+                <div>
+                  <label className="form-label">Title:</label>
+                  <input
+                    type="text"
+                    onChange={handleNormalInput}
+                    placeholder="Title..."
+                    name="title"
+                    value={title}
+                  />
+                </div>
+                <div>
+                  <label className="form-label">Description:</label>
+                  <textarea
+                    name="description"
+                    placeholder="Comment..."
+                    type="text"
+                    id="inputPost"
+                    cols="70"
+                    rows="10"
+                    onChange={handleNormalInput}
+                  ></textarea>
+                </div>
+                <label>
+                  <input
+                    className="choose-file"
+                    type="file"
+                    name="post-image"
+                    onChange={handleFileInput}
+                  />
+                </label>
+                <div className="choose-image">
+                  {error && (
+                    <p style={{ color: "orange", fontWeight: "780" }}>
+                      {error}
+                    </p>
+                  )}
+                </div>
+                <div className="btn-group">
+                  <button
+                    className=" btn-post primary ghost btn btn-secondary mb-4"
+                    type="submit"
+                  >
+                    Post it
+                  </button>
+                  <button
+                    className="btn-post primary btn btn-secondary mb-4"
+                    type="submit"
+                  >
+                    Go Back
+                  </button>{" "}
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

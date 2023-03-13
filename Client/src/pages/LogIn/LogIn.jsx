@@ -38,11 +38,7 @@ export default function LogIn({ authenticate }) {
   }
   return (
     <div>
-      <img
-        className="container-login"
-        src="/public/images/loginbackground.jpg"
-        alt=""
-      />
+      <div className="container-login"></div>
       <div className="background">
         <div className="shape"></div>
         <div className="shape"></div>

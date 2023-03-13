@@ -23,22 +23,27 @@ function HomePage({ user }) {
   return (
     <div className="homePageContainer">
       <Header />
+
       <div className="container-text">
+        <p className="title-individual-blogs">Users BLOG.</p>
+        <p className="subtitle-individual-blogs">
+          Have you found what you are looking for?
+        </p>
+      </div>
+      <div className="container-posts">
+        <div className="individual-posts">
+          {posts.map((post) => (
+            <CardPost key={post._id} post={post} />
+          ))}
+        </div>
         <div>
-          <p className="title-individual-blogs">Users BLOG.</p>
-          <p className="subtitle-individual-blogs">
-            Have you found what you are looking for?{" "}
-          </p>
+          <h2 className="calltoaction">
+            "Plants have different needs, and react to sunlight, water, and
+            fertilizer in a variety of ways. Learn about their needs, and you
+            might be able to stop the damage in time."
+          </h2>
         </div>
       </div>
-      <div className="individual-posts">
-        {posts.map((post) => (
-          <CardPost key={post._id} post={post} />
-        ))}
-      </div>{" "}
-      <p className="subtitle2-individual-blogs">
-        You can also send us a message! ✉️
-      </p>
     </div>
   );
 }

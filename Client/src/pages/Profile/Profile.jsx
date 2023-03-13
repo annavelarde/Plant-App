@@ -40,7 +40,7 @@ export default function Profile(props) {
 
   return (
     <div className="profile-page">
-      <div className="card-body">
+      <div className="card-body-update">
         <div className="card-container">
           <img
             className="round"
@@ -49,12 +49,11 @@ export default function Profile(props) {
             src="/images/Profile-PNG-Pic.png"
             alt="user"
           />
-          <h3>{user.username}</h3>
-          <h3>{user.email}</h3>
-          <h6>{user.country}</h6>
-          <p>
-            Full Stack <br /> developer
-          </p>
+          <h3 className="user">
+            {user.username} | {user.country}
+          </h3>
+          <h3 className="email">{user.email}</h3>
+          <h3 className="job">Full Stack developer</h3>
           <div className="buttons">
             <button className="primary">Message</button>
             <button className="primary ghost">Following</button>

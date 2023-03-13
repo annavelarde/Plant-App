@@ -40,13 +40,17 @@ function SinglePost(props) {
 
   return (
     <div className="cardSinglePost">
-      <img
-        width="100%"
-        className="imageSinglePost"
-        src={singlePost.imageUrl}
-        alt={`${singlePost.username}picture`}
-      />
-      <h3>{singlePost.title}</h3>
+      <div className="overlay-image">
+        <img
+          width="100%"
+          className="imageSinglePost"
+          src={singlePost.imageUrl}
+          alt={`${singlePost.username}picture`}
+        />
+      </div>
+      <h3>Title:</h3>
+      <h4>{singlePost.title}</h4>
+      <h3>Description:</h3>
       <p>{singlePost.description}</p>
       <Link to={`/posts/edit/${postId}`}>
         <button type="button" className="primary btn btn-secondary mb-4">
@@ -61,9 +65,6 @@ function SinglePost(props) {
         >
           Delete
         </button>
-      </Link>
-      <Link>
-        <button type="button">go back</button>
       </Link>
     </div>
   );

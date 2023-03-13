@@ -124,7 +124,8 @@ function CreatePost() {
                     className="btn-post primary btn btn-secondary mb-4"
                     type="submit"
                   >
-                    Go Back
+                    {" "}
+                    <a href="/">Go Back</a>
                   </button>{" "}
                 </div>
               </div>

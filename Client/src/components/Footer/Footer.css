@@ -3,17 +3,17 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  /* background:#889c7b; */
-  background-color: #6c7a63;
-  color:#e5eae3;  
+  background:#889c7b;
+  font-family: "Oxygen", sans-serif;
+  height: 3.5rem;
+  justify-content: center;  
   text-align: center;
-  font-family: 'Lato', sans-serif; 
-  height: 3rem;
+  flex-direction: column;  
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  color: azure;
 }
   
 .fixed-bottom{
-  font-size: 16px;
+  font-size: 11px;
+  font-weight: 300;
   }

@@ -14,18 +14,13 @@ export default function CardPost({ post }) {
         </div>
       </div>
       <div className="text-container">
-        <div>
-          <h4>Title.</h4>
-          <p>{post.title}</p>
+        <h4>Title.</h4>
+        <p className="titlepostcard">{post.title}</p>
+        <div className="link">
+          <Link to={`posts/${post._id}`} className="authLink">
+            <button className="b">View More</button>
+          </Link>
         </div>
-        <div>
-          {/* <h4>Description.</h4>
-          <p>{post.description}</p> */}
-        </div>
-
-        <Link to={`posts/${post._id}`} className="authLink ">
-          <button className="primary btn btn-secondary mb-4">View More</button>
-        </Link>
       </div>
     </div>
   );

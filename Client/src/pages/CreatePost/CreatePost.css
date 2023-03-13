@@ -1,19 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body {
-    font-family: "Oxygen", sans-serif;
-    margin:0;
-    height:100%;
-    overflow:hidden;
-    background-size: 100% ;
-  }
+  font-family: "Oxygen", sans-serif;
+  margin:0;
+  min-height: 100%;    
+  background-size: 100% ;
+ }
 
 
   .backgroundImagePost{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    position:absolute;
+    position:fixed;
     background-image: linear-gradient(rgba(238, 241, 237, 0.482),rgba(0, 0, 0, 0)), url('https://d.newsweek.com/en/full/1670967/plants-interior-design-indoor-garden.jpg');
     /* background-image: linear-gradient(rgba(238, 241, 237, 0.482),rgba(0, 0, 0, 0)), url('https://jooinn.com/images/green-indoor-potted-plant-lot.jpg'); */
     opacity: 1;
@@ -25,9 +24,9 @@ body {
 
 
   .card_content  {
-    height: 58vh;
+    height: 60vh;
     width: 45rem;
-    background-color: rgba(255, 255, 255, 0.13);
+    background-color: rgba(39, 41, 37, 0.2);
     position: absolute;
     transform: translate(-50%, -50%);
     top: 45%;

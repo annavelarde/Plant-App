@@ -3,47 +3,78 @@
     display: inline-block;
     width: 240px;
     text-align: center;
+    margin: 12px;
   }
   
   .img-container {
-      height: 230px;
+      height: 200px;
       width: 200px;
       overflow: hidden;
-      border-radius: 0px 0px 20px 20px;
+      border-radius: 0px 0px 15px 15px;
       display: inline-block;
   }
   
   .img-container img {
       transform: skew(0deg, -13deg);
-      height: 250px;
-      margin: -35px 0px 0px -70px;
+      height: 230px;
+      margin: -20px 0px 0px -70px;
   }
   
   .inner-skew {
       display: inline-block;
       border-radius: 20px;
       overflow: hidden;
-      padding: 0px;
       transform: skew(0deg, 13deg);
       font-size: 0px;
-      margin: 30px 0px 0px 0px;
+      margin: 20px 0px 0px 0px;
       background: #c8c2c2;
-      height: 250px;
+      height: 200px;
       width: 200px;
   }
   
   .text-container {
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
-    padding: 120px 20px 20px 20px;
+    padding: 130px 20px 20px 20px;
     border-radius: 20px;
-    background:rgb(112, 119, 105);
+    background:rgb(87, 90, 85);
     margin: -120px 10px 10px 10px;
     line-height: 19px;
-    font-size: 14px;
+    font-size: 11px;
   }
   
-  .text-container h3 {
-    margin: 20px 0px 10px 0px;
-    color: #231E39;
-    font-size: 18px;
+  .text-container h4 {
+    margin: 2px 0px 5px 0px;
+    color: #dcdae4;
+    font-size: 14px;
+    font-weight: 100;
   }
+
+  .text-container p {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 50;
+  }
+
+  .link{
+    margin: 5px;
+  }
+
+.b{
+    background-color:  #96a88c;
+    border: 1px solid  #96a88c;
+    border-radius: 3px;
+    color: #f7f7f8;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    padding: 5px 15px;
+    font-size:x-small;
+  }
+  
+.b.ghost {
+    background-color: transparent;
+    color:  #96a88c;
+  }
+  
+.titlepostcard{
+  align-items: center;
+}

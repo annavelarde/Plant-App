@@ -1,22 +1,19 @@
 
 body {
   font-family: "Oxygen", sans-serif;
-  color: #050505;
 }
 
 nav {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  font-weight: 500;
-  background-color: #6c7a63;
-  /* background-color: #889c7b; */
+  font-weight: 100;
+  background-color: #697761;
   width: 100%;
-  font-family: 'Lato', sans-serif;
 }
 
 .nav__projectName {
-  color:rgba(251, 249, 249, 0.978) ;
+  color:rgba(242, 234, 234, 0.978) ;
   text-decoration: none;
   font-size: 40px;
 }
@@ -45,7 +42,7 @@ nav {
   background: linear-gradient(to right, #bcc4b5, #9da19c);
   border: none;
   border-radius: 3px;
-  color:#495643;  
+  color:#6c7a63;  
   padding: 0.8em 1em;
   text-align: center;
   text-decoration: none;

@@ -84,45 +84,50 @@ function UpdateSinglePost() {
     return <Loading />;
   }
   return (
-    <div>
-      <img
-        height={"350px"}
-        src={imageUrl}
-        alt={formPicture.name ? formPicture.name : "Upload an Image"}
-      />
-      <form onSubmit={handleSubmit}>
-        <h1>Update your Post</h1>
-        {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
-        <label htmlFor="fileInput">
-          <input
-            type="file"
-            id="fileInput"
-            onChange={handleImageInput}
-            name="post-image"
+    <div className="cardSinglePost">
+      <div className="group">
+        <div className="overlay-image">
+          <img
+            className="imageSinglePost"
+            height={"350px"}
+            src={imageUrl}
+            alt={formPicture.name ? formPicture.name : "Upload an Image"}
           />
-        </label>
-        <div>
-          <b>Post Title:</b>
-          <input
-            type="text"
-            placeholder={title}
-            onChange={handleTextInput}
-            name="title"
-            value={title}
-          />{" "}
-          <b>Post Description:</b>
-          <textarea
-            name="description"
-            value={description}
-            type="text"
-            placeholder={description}
-            onChange={handleTextInput}
-          ></textarea>
         </div>
-        <button type="submit" className="primary ghost">
-          Publish
-        </button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <h1>Update your Post</h1>
+          {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
+          <label htmlFor="fileInput">
+            <input
+              type="file"
+              id="fileInput"
+              onChange={handleImageInput}
+              name="post-image"
+            />
+          </label>
+          <div>
+            <b>Post Title:</b>
+            <input
+              type="text"
+              placeholder={title}
+              onChange={handleTextInput}
+              name="title"
+              value={title}
+            />{" "}
+            <b>Post Description:</b>
+            <textarea
+              name="description"
+              value={description}
+              type="text"
+              placeholder={description}
+              onChange={handleTextInput}
+            ></textarea>
+          </div>
+          <button type="submit" className="primary ghost">
+            Publish
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

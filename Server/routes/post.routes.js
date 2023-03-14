@@ -71,34 +71,39 @@ router.get("/:id", isLoggedIn, async (req, res) => {
 });
 
 //UPDATING Single POST//
-router.put("/edit/:postId", upload.single("formPicture"), async (req, res) => {
-  try {
-    const { postId } = req.params;
-    // console.log(" 👉 👉 / router.put / params", params);
-    const { title, description } = req.body;
-    console.log(" 👉 👉 / router.put / body", req.body);
-    // Ccreating and appending the image into the newPost
-    const newPost = { title, description };
-    if (req.file) {
-      newPost.imageUrl = req.file.path;
-    }
-    console.log("LOOOOOKKKKKKK", newPost);
-    const updatingPost = await PostModel.findOneAndUpdate(
-      { _id: postId },
-      newPost,
-      {
-        new: true,
+router.put(
+  "/edit/:postId",
+  isLoggedIn,
+  upload.single("formPicture"),
+  async (req, res) => {
+    try {
+      const { postId } = req.params;
+      // console.log(" 👉 👉 / router.put / params", params);
+      const { title, description } = req.body;
+      console.log(" 👉 👉 / router.put / body", req.body);
+      // Ccreating and appending the image into the newPost
+      const newPost = { title, description };
+      if (req.file) {
+        newPost.imageUrl = req.file.path;
       }
-    );
+      console.log("LOOOOOKKKKKKK", newPost);
+      const updatingPost = await PostModel.findOneAndUpdate(
+        { _id: postId },
+        newPost,
+        {
+          new: true,
+        }
+      );
 
-    if (!updatingPost) {
-      return res.status(404).json({ message: "Post edit Unsuccessful" });
+      if (!updatingPost) {
+        return res.status(404).json({ message: "Post edit Unsuccessful" });
+      }
+      res.status(200).json(updatingPost);
+    } catch (error) {
+      res.status(404).json({ message: error.message });
     }
-    res.status(200).json(updatingPost);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
   }
-});
+);
 
 //DELETE Single POST//
 router.delete("/:id", async (req, res) => {

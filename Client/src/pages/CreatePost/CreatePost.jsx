@@ -61,73 +61,55 @@ function CreatePost() {
   }
 
   return (
-    <div className="container">
+    <div className="container-createpost">
       <div className="backgroundImagePost">
-        {/* <img
-        className="backgroundImagePost"
-        src="https://d.newsweek.com/en/full/1670967/plants-interior-design-indoor-garden.jpg"
-        // src="https://www.friendsoffriends.com/app/uploads/igor-and-judith-of-urban-jungle-bloggers-explain-why-plants-became-so-important-for-our-city-homes/Freunde-von-Freunden-Igor-Josifovic-Judith-de-Graaff-6.jpg"
-        // src="/public/images/BI9A2487-1.jpeg"
-        alt="background"
-      /> */}
-        <div className="card_content">
+        <div className="card-content">
           <form method="POST" onSubmit={handleSubmit}>
-            <div className="card-components">
-              <h1 className="title-homepage">Create a Post</h1>
-              <label className="form-label" />
-              <div>
-                <div>
-                  <label className="form-label">Title:</label>
-                  <input
-                    type="text"
-                    onChange={handleNormalInput}
-                    placeholder="Title..."
-                    name="title"
-                    value={title}
-                  />
-                </div>
-                <div>
-                  <label className="form-label">Description:</label>
-                  <textarea
-                    name="description"
-                    placeholder="Comment..."
-                    type="text"
-                    id="inputPost"
-                    cols="70"
-                    rows="10"
-                    onChange={handleNormalInput}
-                  ></textarea>
-                </div>
-                <label>
-                  <input
-                    className="choose-file"
-                    type="file"
-                    name="post-image"
-                    onChange={handleFileInput}
-                  />
-                </label>
-                <div className="choose-image">
-                  {error && (
-                    <p style={{ color: "orange", fontWeight: "780" }}>
-                      {error}
-                    </p>
-                  )}
-                </div>
-                <div className="btn-group">
-                  <button
-                    className=" btn-post primary ghost btn btn-secondary mb-4"
-                    type="submit"
-                  >
-                    Post it
-                  </button>
-                  <button
-                    className="btn-post primary btn btn-secondary mb-4"
-                    type="submit"
-                  >
-                    {" "}
-                    <a href="/">Go Back</a>
-                  </button>{" "}
-                </div>
+            <div className="card-components-createpost">
+              <h1 className="title-createpost">Create Post</h1>
+              <label className="form-label">Title.</label>
+              <input
+                type="text"
+                className="form-label-2"
+                onChange={handleNormalInput}
+                placeholder="type of plant"
+                name="title"
+                value={title}
+              />
+              <label className="form-label">Description.</label>
+              <textarea
+                className="form-label-3"
+                name="description"
+                placeholder="comment"
+                type="text"
+                id="inputPost"
+                cols="70"
+                rows="6"
+                onChange={handleNormalInput}
+              ></textarea>{" "}
+              <label>
+                <input
+                  className="choose-file"
+                  type="file"
+                  name="post-image"
+                  onChange={handleFileInput}
+                />
+              </label>
+              <div className="choose-image">
+                {error && (
+                  <p style={{ color: "pink", fontWeight: "280" }}>{error}</p>
+                )}
+              </div>
+              <div className="btn-group">
+                <button className="btn-post-white ghost " type="submit">
+                  Publish
+                </button>
+                <button
+                  className="btn-post primary btn btn-secondary mb-4"
+                  type="submit"
+                >
+                  <a href="/">Back</a>
+                </button>{" "}
               </div>
             </div>
           </form>

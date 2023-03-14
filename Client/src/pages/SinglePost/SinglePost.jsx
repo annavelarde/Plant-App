@@ -40,32 +40,54 @@ function SinglePost(props) {
 
   return (
     <div className="cardSinglePost">
-      <div className="overlay-image">
-        <img
-          width="100%"
-          className="imageSinglePost"
-          src={singlePost.imageUrl}
-          alt={`${singlePost.username}picture`}
-        />
+      <div className="group">
+        <div className="overlay-image">
+          <img
+            width="100%"
+            className="imageSinglePost"
+            src={singlePost.imageUrl}
+            alt={`${singlePost.username}picture`}
+          />
+        </div>
+        <h3 className="title-singlePost">Title.</h3>
+        <p className="text-singlePost">{singlePost.title}</p>
+        <h3 className="description-singlePost">Description.</h3>
+        <p className="text-singlePost">{singlePost.description}</p>
+        <div className="buttons-single">
+          {props.user ? (
+            <>
+              <Link to={`/posts/edit/${postId}`}>
+                <button
+                  type="button"
+                  className="primary btn btn-secondary mb-4"
+                >
+                  Edit
+                </button>
+              </Link>
+              <Link>
+                <button
+                  type="button"
+                  onClick={handleDeletePost}
+                  className="primary ghost"
+                >
+                  Delete
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to={`/`}>
+                <button
+                  type="button"
+                  className="primary btn btn-secondary mb-4"
+                >
+                  Back
+                </button>
+              </Link>
+            </>
+          )}
+        </div>
       </div>
-      <h3>Title:</h3>
-      <h4>{singlePost.title}</h4>
-      <h3>Description:</h3>
-      <p>{singlePost.description}</p>
-      <Link to={`/posts/edit/${postId}`}>
-        <button type="button" className="primary btn btn-secondary mb-4">
-          Edit
-        </button>
-      </Link>
-      <Link>
-        <button
-          type="button"
-          onClick={handleDeletePost}
-          className="primary ghost"
-        >
-          Delete
-        </button>
-      </Link>
     </div>
   );
 }

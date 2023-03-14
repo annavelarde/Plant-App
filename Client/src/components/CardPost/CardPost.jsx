@@ -15,7 +15,7 @@ export default function CardPost({ post }) {
       </div>
       <div className="text-container">
         <h4>Title.</h4>
-        <p className="titlepostcard">{post.title}</p>
+        <h4 className="titlepostcard">{post.title}</h4>
         <div className="link">
           <Link to={`posts/${post._id}`} className="authLink">
             <button className="b">View More</button>

@@ -86,7 +86,7 @@ function UpdateProfile(props) {
     <div className="profile-page-update">
       <div className="card-body-update">
         <h1> Hi {user.username}, </h1>
-        <b>update your profile below </b>
+        <b>update your profile </b>
         <br />
       </div>
       <div>

@@ -1,16 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+*{padding: 0; margin: 0; box-sizing: border-box;}
 
 .cardSinglePost{
     font-family: Montserrat, sans-serif;
 	display: flex;
-	align-items: center;
-	flex-direction: column;
+	margin: 50px;
 } 
+.overlay-image{
+	display: flex;
+	justify-items: center ;
+
+}
+
+.group{
+	display: flex;
+	align-items: left;
+	flex-direction: column;
+}
 
 .imageSinglePost{
-	width: 100%;
-	height: 50vh;
+	height: 43vh;
 	background-size: cover;
-	display: flex;
+	border-radius: 20px ;
 	overflow: hidden;
 	
+}
+
+.description-singlePost{
+	font-size: medium;
+	color: rgb(0, 0, 0);
+}
+
+.title-singlePost{
+	font-size: medium;
+	margin-top: 7% ;
+}
+
+.buttons-singlepost{
+	margin: 13%;
+}
+
+.text-singlePost{
+	color: rgba(136, 127, 127, 0.861);
+	font-size: small;
+	margin-bottom: 20px;
+
 }

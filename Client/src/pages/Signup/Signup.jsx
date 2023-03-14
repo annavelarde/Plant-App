@@ -50,7 +50,11 @@ export default function Signup({ authenticate }) {
   return (
     <div className="signupcontainer">
       <form onSubmit={handleFormSubmission} className="form-signup">
-        <h2>Sign Up.</h2>
+        <h4 className="h4-style-signup">Join Plant Weblog!</h4>
+        <h6 className="h6-style-signup">
+          First, let's create your user account
+        </h6>
+
         <label className="label-signup" htmlFor="input-username">
           Username
         </label>
@@ -73,7 +77,7 @@ export default function Signup({ authenticate }) {
           id="input-email"
           type="email"
           name="email"
-          placeholder="john@doe.com"
+          placeholder="default@example.com"
           value={email}
           onChange={handleInputChange}
           required
@@ -100,7 +104,7 @@ export default function Signup({ authenticate }) {
           id="input-password"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="•••••••"
           // value={password}
           onChange={handleInputChange}
           required
@@ -111,7 +115,10 @@ export default function Signup({ authenticate }) {
             <p>{error.message} Please, check if all fields are correct.</p>
           </div>
         )}
-        <button className="button-signup" type="submit">
+        <button
+          className="primary btn btn-secondary mb-4 button-signup"
+          type="submit"
+        >
           Signup
         </button>
       </form>

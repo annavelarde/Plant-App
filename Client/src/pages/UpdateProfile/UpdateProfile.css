@@ -14,7 +14,7 @@
 	align-content: center;
 	justify-content: center;
 	align-items: center;
-	padding-bottom:80px;
+	padding-bottom:90px;
 }
 
 .addPicture{margin: 25;}
@@ -36,7 +36,7 @@ h6 {
 	display: flex;
 	justify-content:left ;
 	margin-left:92px;
-	padding: 4px;
+	padding: 7px;
 }
 
 .card-body-update{
@@ -46,9 +46,9 @@ h6 {
 	/* border:5px solid rgb(0, 0, 0); */
 	align-items: center;
 	flex-direction: column;
-	width:35%;
+	width:40%;
 	padding: 50px;
-	margin: 60px;
+	margin: 30px;
 }
 
 
@@ -98,7 +98,7 @@ button.primary.ghost {
 	display: inline-block;
 	font-size: 12px;
 	margin: 0 7px 7px 0;
-	padding: px;
+	padding: 2px;
 }
 
 

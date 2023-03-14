@@ -23,7 +23,6 @@ function HomePage({ user }) {
   return (
     <div className="homePageContainer">
       <Header />
-
       <div className="container-text">
         <p className="title-individual-blogs">Users BLOG.</p>
         <p className="subtitle-individual-blogs">

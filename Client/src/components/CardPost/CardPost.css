@@ -36,7 +36,7 @@
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     padding: 130px 20px 20px 20px;
     border-radius: 20px;
-    background:rgb(87, 90, 85);
+    background:rgb(107, 109, 105);
     margin: -120px 10px 10px 10px;
     line-height: 19px;
     font-size: 11px;
@@ -75,6 +75,12 @@
     color:  #96a88c;
   }
   
-.titlepostcard{
+/* .titlepostcard{
   align-items: center;
+  font-size: small;
+  color: #dcdae4;
+} */
+
+.form-label-2{
+  font-size: medium;
 }

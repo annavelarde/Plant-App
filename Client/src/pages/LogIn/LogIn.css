@@ -5,42 +5,30 @@
   margin: 0;
   box-sizing: border-box;
 }
+/* .form-login{
+  background-color: rgba(236, 11, 11, 0.13);
+width: 100px;
+  border-color: #ff512f;
 
-.background {
-  width: 530px;
-  height: 320px;
-  position: fixed;
-  transform: translate(-50%, -50%);
+} */
+
+.content-form{  
+  background-color: rgba(153, 146, 139, 0.13);
+  width:10cm;
+  transform: translate(-50%, -50%); 
+  top: 45%;
   left: 50%;
-  top: 50%;
-}
-
-.shape:first-child {
-  background: linear-gradient(#1845ad, #23a2f6);
-  left: -80px;
-  top: -80px;
-}
-.shape:last-child {
-  background: linear-gradient(to right, #ff512f, #f09819);
-  right: -30px;
-  bottom: -40px;
-}
-.form-login {
-  height: 60vh;
-  width: 20rem;
-  background-color: rgba(255, 255, 255, 0.13);
-  position: absolute;
-  transform: translate(-40%, -50%);
-  top: 50%;
-  left: 30%;
   border-radius: 20px;
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(117, 52, 52, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  padding: 70px 40px;
+  padding: 50px 60px;
+  align-items: center;
+  flex-direction: column;
+  position:absolute;
 }
+
 .form-login * {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #ffffff;
   letter-spacing: 0.5px;
   outline: none;
@@ -54,16 +42,18 @@
 }
 
 .label-login {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
   margin-top: 30px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 50;
 }
+
 .input-login {
-  display: block;
-  height: 30px;
+  height: 40px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.07);
+  background-color: rgba(250, 249, 249, 0.2);
   border-radius: 3px;
   padding: 0 10px;
   margin-top: 8px;
@@ -77,17 +67,14 @@
 }
 
 .button-login {
-  background: linear-gradient(to right, #19473a, #083f23);
-  width: 50%;
-  margin-top: 20px;
-  border: none;
+  width:100%;
+  margin-top: 30px;
   border-radius: 4px;
-  color: white;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   -webkit-transition-duration: 0.4s;
@@ -95,24 +82,55 @@
 }
 
 .button-login:hover {
-  background: linear-gradient(to right, #242832, #f88b61);
+  background: linear-gradient(to right, #4e7446, #e4e2e0);
+  padding-bottom: 10px;
 }
 
 .error-block p {
   text-align: start;
-  font-size: 25px;
+  font-size: 13px;
   font-weight: 250;
-  margin: 20px 10px;
-  color: #f05619;
+  margin:  5px;
+  color: #48c7c5;
 }
 
-.container-login{
-  background: linear-gradient(rgba(232, 229, 229, 0.476),rgba(0, 0, 0, 0.281)), url('/public/images/green-leaf-plant-18.jpeg');
+.container-login-image{
+  background: linear-gradient(rgba(232, 229, 229, 0.476),rgba(0, 0, 0, 0.281)), url('/public/images/green-indoor-potted-plant-lot.jpeg');
 	background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  position:fixed;
-	display:flex;
+  position:absolute;
   width:100%;
-  height:100%; 
+  height:90%; 
+  /* border-color: #ff512f; */
+}
+
+.label-login-name{
+  padding-left: 10px;
+  font-size: small;
+}
+
+.label-login-icon{
+  padding-top: 3px;
+}
+
+.label-password-name{
+  padding-left: 10px;
+  font-size: small;
+
+}
+
+.label-password-icon{
+  padding-top: 3px;
+}
+
+.h6-style-loggin{
+ font-size: smaller;
+ font-weight:10;
+}
+
+.h2-style-loggin{
+  font-size:xx-large;
+  font-weight:80;
+  color: #3b3e40;
 }

@@ -109,6 +109,7 @@ export default function Signup({ authenticate }) {
           onChange={handleInputChange}
           required
           minLength="8"
+          autoComplete="username"
         />
         {error && (
           <div className="error-signup">

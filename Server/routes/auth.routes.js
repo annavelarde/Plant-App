@@ -10,8 +10,13 @@ const saltRounds = 10;
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
+//Register get
+router.get("/signup", (req, res) => {
+  res.send("signup");
+});
+
+//session
 router.get("/session", (req, res) => {
-  // we dont want to throw an error, and just maintain the user as null
   if (!req.headers.authorization) {
     return res.json(null);
   }

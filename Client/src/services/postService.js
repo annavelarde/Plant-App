@@ -4,7 +4,7 @@ import { sendUser, getUserToken } from "../utils/userToken";
 import { onError, onSuccess } from "../utils/serverResponseHandlers";
 
 const postService = axios.create({
-  baseURL: `${SERVER_URL}/posts`,
+  baseURL: `${SERVER_URL}/api/posts`,
 });
 
 export function getPosts() {

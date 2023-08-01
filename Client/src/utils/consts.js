@@ -26,6 +26,6 @@ export function sendUser() {
 
 // const NODE_ENV = process.env.NODE_ENV;
 
-const BASE_URL = import.meta.env.VITE_API_URI || "http://localhost:6005";
+const BASE_URL = import.meta.env.VITE_API_URI || "http://localhost:7005";
 
 export const SERVER_URL = `${BASE_URL}/api`;

@@ -23,10 +23,7 @@ module.exports = (app) => {
   app.use(
     cors({
       credentials: true,
-      origin:
-        process.env.ORIGIN ||
-        "http://127.0.0.1:5173" ||
-        "https://plantsapp.netlify.app",
+      origin: process.env.ORIGIN || "http://127.0.0.1:5173",
     })
   );
 

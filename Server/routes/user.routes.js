@@ -4,6 +4,9 @@ const User = require("../models/User.model");
 const Session = require("../models/Session.model");
 const Post = require("../models/Post.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
+// const isLoggedOut = require("../middleware/isLoggedOut");
+
+// const bcrypt = require("bcryptjs");
 
 //updating image
 router.put(

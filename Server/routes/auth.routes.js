@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 
 const Session = require("../models/Session.model");
 const UserModel = require("../models/User.model");
-const mongoose = require("mongoose");
 
 const saltRounds = 10;
 

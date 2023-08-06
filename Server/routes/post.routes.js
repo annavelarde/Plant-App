@@ -77,7 +77,7 @@ router.put(
   upload.single("formPicture"),
   async (req, res) => {
     try {
-      const { postId } = req.params;
+      const { id: postId } = req.params;
       // console.log(" 👉 👉 / router.put / params", params);
       const { title, description } = req.body;
       console.log(" 👉 👉 / router.put / body", req.body);
@@ -92,6 +92,7 @@ router.put(
         newPost,
         {
           new: true,
+          runValidators: true,
         }
       );
 

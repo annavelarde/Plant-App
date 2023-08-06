@@ -4,22 +4,23 @@ body {
 
 .homePageContainer{
     background-color: rgb(255, 255, 255);
-    height: 150%;
+    height: 100vh;
     width: 100%;
-    text-align: center;
 }
 
 .individual-posts{
-    display: flex;
-    justify-content: center;
-	flex-direction:row;
-    /* border:5px solid rgb(0, 0, 0); */
-    margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row; 
+  align-items: center;
+  /* border: 5px solid rgb(0, 0, 0); */
+  background-color: #fdfdfd; 
+  flex-wrap: wrap;
 }
+
 
 .container-text{
     display: flex; 
-    /* border:5px solid rgb(0, 0, 0); */
     flex-direction: column;
     margin-top: 30px;
 
@@ -48,12 +49,22 @@ body {
     margin-bottom: 40px;
 }
 
-.calltoaction{
-    background-color: #d4d4d3b2;
-    padding: 70px;
-    font-weight: 300;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    color: rgb(97, 97, 97);
+.calltoactionTitle{
+ /* border: 5px solid rgb(0, 0, 0); */
+ padding-bottom: 70px;
+ padding-top: 20px;
+ 
+}
 
+.calltoaction{
+    padding: 70px;
+    margin: 20px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(97, 97, 97); 
+    background-color: #d4d4d3b2;
+    font-size: medium;
+    
 }

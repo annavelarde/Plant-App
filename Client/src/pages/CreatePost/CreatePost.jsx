@@ -62,58 +62,56 @@ function CreatePost() {
 
   return (
     <div className="container-createpost">
-      <div className="backgroundImagePost">
-        <div className="card-content">
-          <form method="POST" onSubmit={handleSubmit}>
-            <div className="card-components-createpost">
-              <h1 className="title-createpost">Create Post</h1>
-              <label className="form-label">Title.</label>
+      <div className="card-content">
+        <form method="POST" onSubmit={handleSubmit}>
+          <div className="card-components-createpost">
+            <h1 className="title-createpost">Create Post</h1>
+            <label className="form-label">Title.</label>
+            <input
+              type="text"
+              className="form-label-2"
+              onChange={handleNormalInput}
+              placeholder="type of plant"
+              name="title"
+              value={title}
+            />
+            <label className="form-label">Description.</label>
+            <textarea
+              className="form-label-3"
+              name="description"
+              placeholder="comment"
+              type="text"
+              id="inputPost"
+              cols="70"
+              rows="6"
+              onChange={handleNormalInput}
+            ></textarea>{" "}
+            <label>
               <input
-                type="text"
-                className="form-label-2"
-                onChange={handleNormalInput}
-                placeholder="type of plant"
-                name="title"
-                value={title}
+                className="choose-file"
+                type="file"
+                name="post-image"
+                onChange={handleFileInput}
               />
-              <label className="form-label">Description.</label>
-              <textarea
-                className="form-label-3"
-                name="description"
-                placeholder="comment"
-                type="text"
-                id="inputPost"
-                cols="70"
-                rows="6"
-                onChange={handleNormalInput}
-              ></textarea>{" "}
-              <label>
-                <input
-                  className="choose-file"
-                  type="file"
-                  name="post-image"
-                  onChange={handleFileInput}
-                />
-              </label>
-              <div className="choose-image">
-                {error && (
-                  <p style={{ color: "pink", fontWeight: "280" }}>{error}</p>
-                )}
-              </div>
-              <div className="btn-group">
-                <button className="btn-post-white ghost " type="submit">
-                  Publish
-                </button>
-                <button
-                  className="btn-post primary btn btn-secondary mb-4"
-                  type="submit"
-                >
-                  <a href="/">Back</a>
-                </button>{" "}
-              </div>
+            </label>
+            <div className="choose-image">
+              {error && (
+                <p style={{ color: "pink", fontWeight: "280" }}>{error}</p>
+              )}
             </div>
-          </form>
-        </div>
+            <div className="btn-group">
+              <button className="btn-post-white ghost " type="submit">
+                Publish
+              </button>
+              <button
+                className="btn-post primary btn btn-secondary mb-4"
+                type="submit"
+              >
+                <a href="/">Back</a>
+              </button>{" "}
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

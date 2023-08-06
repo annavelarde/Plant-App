@@ -30,6 +30,9 @@ function SinglePost(props) {
   function handleDeletePost() {
     deleteSinglePost(postId)
       .then((res) => {
+        if (!res.success) {
+          return setError(response.data);
+        }
         // console.log(" 👉 👉 / .then / e", res);
         navigate(PATHS.HOME_PAGE);
       })
@@ -76,7 +79,7 @@ function SinglePost(props) {
             </>
           ) : (
             <>
-              <Link to={`/`}>
+              <Link to={`/signup`}>
                 <button
                   type="button"
                   className="primary btn btn-secondary mb-4"

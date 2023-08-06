@@ -40,48 +40,46 @@ export default function Profile(props) {
 
   return (
     <div className="profile-page">
-      <div className="card-body-update">
-        <div className="card-container">
-          <img
-            className="round"
-            width="35%"
-            height="auto"
-            src="/images/Profile-PNG-Pic.png"
-            alt="user"
-          />
-          <h3 className="user">
-            {user.username} | {user.country}
-          </h3>
-          <h3 className="email">{user.email}</h3>
-          <h3 className="job">Full Stack developer</h3>
-          <div className="buttons">
-            <button className="primary">Message</button>
-            <button className="primary ghost">Following</button>
-          </div>
-          <div className="skills">
-            <h6>Skills/Tags</h6>
-            <ul>
-              <li>Front End Development</li>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>React</li>
-              <li>Node</li>
-            </ul>
-            <br />
-            <button className="primary btn btn-secondary mb-4">
-              <a href="/profile/edit">Edit Profile</a>
+      <div className="card-container">
+        <img
+          className="round"
+          width="35%"
+          height="auto"
+          src="/images/Profile-PNG-Pic.png"
+          alt="user"
+        />
+        <h3 className="user">
+          {user.username} | {user.country}
+        </h3>
+        <h3 className="email">{user.email}</h3>
+        <h3 className="job">Full Stack developer</h3>
+        <div className="buttons">
+          <button className="primary">Message</button>
+          <button className="primary ghost">Following</button>
+        </div>
+        <div className="skills">
+          <h6>Skills/Tags</h6>
+          <ul>
+            <li>Front End Development</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Node</li>
+          </ul>
+          <br />
+          <button className="primary btn btn-secondary mb-4">
+            <a href="/profile/edit">Edit Profile</a>
+          </button>
+          {user._id && (
+            <button
+              className="primary ghost btn btn-secondary mb-4"
+              type="delete"
+              onClick={handleDeleteUser}
+            >
+              Delete
             </button>
-            {user._id && (
-              <button
-                className="primary ghost btn btn-secondary mb-4"
-                type="delete"
-                onClick={handleDeleteUser}
-              >
-                Delete
-              </button>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </div>

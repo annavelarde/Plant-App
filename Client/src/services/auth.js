@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as USER_HELPERS from "../utils/userToken";
-import { SERVER_URL } from "../utils/consts";
+// import { SERVER_URL } from "../utils/consts";
 
 function internalServerError(err) {
   if (err.response && err.response.data && err.response.data.errorMessage) {
@@ -23,7 +23,7 @@ function successStatus(res) {
 }
 
 const authService = axios.create({
-  baseURL: `${SERVER_URL}/api/auth`,
+  baseURL: `${import.meta.env.VITE_API_URI}/api/auth`,
 });
 
 export function login(credentials) {
@@ -33,11 +33,11 @@ export function login(credentials) {
     .catch(internalServerError);
 }
 
-export function getLoggedIn() {
+export function getLoggedIn(acessToken) {
   return authService
-    .get(`session`, {
+    .get(`/session`, {
       headers: {
-        Authorization: USER_HELPERS.getUserToken(),
+        authorization: USER_HELPERS.getUserToken(acessToken),
       },
     })
     .then(successStatus)
@@ -55,7 +55,7 @@ export function logout() {
   return authService
     .delete("/logout", {
       headers: {
-        Authorization: USER_HELPERS.getUserToken(),
+        authorization: USER_HELPERS.getUserToken(),
       },
     })
     .then(successStatus)

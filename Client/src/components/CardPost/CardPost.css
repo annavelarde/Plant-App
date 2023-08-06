@@ -1,9 +1,13 @@
 
   .a-box {
-    display: inline-block;
     width: 240px;
     text-align: center;
+    justify-content: center;
     margin: 12px;
+    /* border:5px solid rgb(208, 0, 0);   */
+    position: relative;
+    align-items: center;
+    display:grid;
   }
   
   .img-container {
@@ -16,13 +20,12 @@
   
   .img-container img {
       transform: skew(0deg, -13deg);
-      height: 230px;
-      margin: -20px 0px 0px -70px;
+      height: 240px;
+      margin: -20px 20px 0px -10px;
   }
-  
+
   .inner-skew {
-      display: inline-block;
-      border-radius: 20px;
+      border-radius: 15px;
       overflow: hidden;
       transform: skew(0deg, 13deg);
       font-size: 0px;
@@ -31,16 +34,17 @@
       height: 200px;
       width: 200px;
   }
-  
-  .text-container {
+
+
+.text-container {
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
-    padding: 130px 20px 20px 20px;
-    border-radius: 20px;
+    padding: 130px 15px 15px 20px;
+    border-radius: 10px;
     background:rgb(107, 109, 105);
-    margin: -120px 10px 10px 10px;
-    line-height: 19px;
+    margin: -130px -10px 10px -10px;
+    line-height: 30px;
     font-size: 11px;
-  }
+  } 
   
   .text-container h4 {
     margin: 2px 0px 5px 0px;
@@ -75,11 +79,11 @@
     color:  #96a88c;
   }
   
-/* .titlepostcard{
+.titlepostcard{
   align-items: center;
   font-size: small;
   color: #dcdae4;
-} */
+}
 
 .form-label-2{
   font-size: medium;

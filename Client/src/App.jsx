@@ -1,3 +1,5 @@
+/** @format */
+
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
@@ -53,19 +55,27 @@ export default function App() {
   }
 
   return (
-    <div className="App">
-      <Navbar handleLogout={handleLogout} user={user} />
-      <Routes>
-        {routes({ user, setUser, authenticate, handleLogout }).map((route) => (
-          <Route
-            key="uniqueId"
-            // key={route.path}
-            path={route.path}
-            element={route.element}
-          />
-        ))}
-      </Routes>
-      <Footer />
-    </div>
+    <>
+      <header>
+        <Navbar handleLogout={handleLogout} user={user} />
+      </header>
+      <main>
+        <Routes>
+          {routes({ user, setUser, authenticate, handleLogout }).map(
+            (route) => (
+              <Route
+                key2="uniqueId"
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            )
+          )}
+        </Routes>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
 }

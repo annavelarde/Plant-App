@@ -57,11 +57,11 @@ const routes = (props) => {
 
     {
       path: PATHS.SINGLE_POST_PAGE_EDIT,
-      element: user ? (
-        <UpdateSinglePost {...props} />
-      ) : (
-        <Navigate to={PATHS.LOGIN_PAGE} replace />
-      ),
+      element: user ? <UpdateSinglePost {...props} /> : <Signup />,
+    },
+    {
+      path: "*",
+      element: <h1>404 This Page NOT EXIST!</h1>,
     },
   ];
 };

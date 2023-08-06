@@ -1,6 +1,6 @@
 import axios from "axios";
 import { SERVER_URL } from "../utils/consts";
-import { sendUser, getUserToken } from "../utils/userToken";
+import { sendUser } from "../utils/userToken";
 import { onError, onSuccess } from "../utils/serverResponseHandlers";
 
 const postService = axios.create({
@@ -9,11 +9,7 @@ const postService = axios.create({
 
 export function getPosts() {
   return postService
-    .get("/", {
-      headers: {
-        authorization: getUserToken(),
-      },
-    })
+    .get("/", sendUser())
     .then(onSuccess("getPosts"))
     .catch(onError("getPosts"));
 }
@@ -46,11 +42,7 @@ export function deleteSinglePost(id) {
   // const authorization = getUserToken();
   console.log("This post was succesful deleted 👉:", id);
   return postService
-    .delete(`/${id}`, {
-      headers: {
-        authorization: getUserToken(),
-      },
-    })
+    .delete(`/${id}`, sendUser())
     .then(onSuccess("deleted-post"))
     .catch(onError("deleted-post"));
 }

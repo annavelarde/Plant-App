@@ -84,78 +84,82 @@ function UpdateProfile(props) {
 
   return (
     <div className="profile-page-update">
-      <div className="card-body-update">
-        <h1> Hi {user.username}, </h1>
-        <b>update your profile </b>
-        <br />
-      </div>
-      <div>
-        <div className="card-container-update">
-          <img
-            className="round"
-            width="35%"
-            height="auto"
-            src={user.profileImage}
-            alt={isLoading ? user.chosenPicture : user.profileImage}
-          />
-          <div>
-            {error && (
-              <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>
-            )}
-            <form onSubmit={handleFromSubmit} method="POST">
+      <div className="elements-profile">
+        <div className="card-body-update">
+          <h1> Hi {user.username}, </h1>
+          <b>update your profile </b>
+          <br />
+        </div>
+        <div>
+          <div className="card-container-div">
+            <div className="card-container-update">
+              <img
+                className="round"
+                width="35%"
+                height="auto"
+                src={user.profileImage}
+                alt={isLoading ? user.chosenPicture : user.profileImage}
+              />
               <div>
-                <div>
-                  <input
-                    className="addPicture"
-                    key={inputKey}
-                    type="file"
-                    onChange={handleImageInput}
-                  />
-                  {/* <button type="submit">Update image</button> */}
-                </div>
-                <div>
-                  <p className="style"> Name: </p>
-                  <input
-                    type="text"
-                    name="username"
-                    placeholder={user.username}
-                    value={infoUser.username}
-                    onChange={handleTextChange}
-                  />
-                  <p className="style">Email:</p>
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder={user.email}
-                    value={infoUser.email}
-                    onChange={handleTextChange}
-                  />
-                  <p className="style">Country:</p>
-                  <input
-                    type="text"
-                    name="country"
-                    placeholder={user.country}
-                    value={infoUser.country}
-                    onChange={handleTextChange}
-                  />
-                </div>
+                {error && (
+                  <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>
+                )}
+                <form onSubmit={handleFromSubmit} method="POST">
+                  <div>
+                    <div>
+                      <input
+                        className="addPicture"
+                        key={inputKey}
+                        type="file"
+                        onChange={handleImageInput}
+                      />
+                      {/* <button type="submit">Update image</button> */}
+                    </div>
+                    <div>
+                      <p className="style"> Name: </p>
+                      <input
+                        type="text"
+                        name="username"
+                        placeholder={user.username}
+                        value={infoUser.username}
+                        onChange={handleTextChange}
+                      />
+                      <p className="style">Email:</p>
+                      <input
+                        type="text"
+                        name="email"
+                        placeholder={user.email}
+                        value={infoUser.email}
+                        onChange={handleTextChange}
+                      />
+                      <p className="style">Country:</p>
+                      <input
+                        type="text"
+                        name="country"
+                        placeholder={user.country}
+                        value={infoUser.country}
+                        onChange={handleTextChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="skills">
+                    <h6>Skills/Tags</h6>
+                    <ul>
+                      <li>Front End Development</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <li>JavaScript</li>
+                      <li>React</li>
+                      <li>Node</li>
+                    </ul>
+                    <br />
+                    <button className="primary btn btn-secondary mb-4">
+                      Publish
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div className="skills">
-                <h6>Skills/Tags</h6>
-                <ul>
-                  <li>Front End Development</li>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
-                  <li>React</li>
-                  <li>Node</li>
-                </ul>
-                <br />
-                <button className="primary btn btn-secondary mb-4">
-                  Publish
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

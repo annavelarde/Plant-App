@@ -39,8 +39,8 @@ router.get("/", (req, res) => {
 // });
 
 router.post("/", isLoggedIn, upload.single("imageUrl"), (req, res) => {
-  console.log("CREATING POST---->", req.body);
-  console.log("CREATING file---->", req.file);
+  // console.log("CREATING POST---->", req.body);
+  // console.log("CREATING file---->", req.file);
   PostModel.create({
     title: req.body.title,
     description: req.body.description,
@@ -60,7 +60,7 @@ router.post("/", isLoggedIn, upload.single("imageUrl"), (req, res) => {
 // READ/FIND ID POST//
 router.get("/:id", isLoggedIn, async (req, res) => {
   // res.send("singlepost");
-  console.log("PARAAAAMMMMMSSSS", req.params);
+  // console.log("PARAAAAMMMMMSSSS", req.params);
   try {
     const { id: postId } = req.params;
     const getSinglePost = await PostModel.findById({ _id: postId });
@@ -77,8 +77,8 @@ router.put(
   upload.single("formPicture"),
   async (req, res) => {
     try {
-      const { id: postId } = req.params;
-      // console.log(" 👉 👉 / router.put / params", params);
+      const { postId } = req.params;
+      console.log("REQ.PARAMS OBJECT --->81", req.params);
       const { title, description } = req.body;
       console.log(" 👉 👉 / router.put / body", req.body);
       // Ccreating and appending the image into the newPost
@@ -86,7 +86,7 @@ router.put(
       if (req.file) {
         newPost.imageUrl = req.file.path;
       }
-      console.log("LOOOOOKKKKKKK", newPost);
+      // console.log("LOOOOOKKKKKKK", newPost);
       const updatingPost = await PostModel.findOneAndUpdate(
         { _id: postId },
         newPost,

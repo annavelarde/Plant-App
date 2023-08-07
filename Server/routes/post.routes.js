@@ -3,40 +3,11 @@ const PostModel = require("../models/Post.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const upload = require("../middleware/cloudinary");
 
-// router.get("/", (req, res) => {
-//   res.send("post");
-// });
-
-//READ POST//
-// router.get("/", async (req, res) => {
-//   try {
-//     const allPosts = await PostModel.find({});
-//     res.status(200).json({ posts: allPosts });
-//   } catch (error) {
-//     res.status(404).json({ message: error.message });
-//   }
-// });
-
 router.get("/", (req, res) => {
   PostModel.find({}).then((allPosts) => {
     res.json({ posts: allPosts });
   });
 });
-
-//CREATE POST//
-// router.post("/create", isLoggedIn, async (req, res) => {
-//   console.log(req.body);
-//   try {
-//     const createPost = await PostModel.create({
-//       title: req.body.title,
-//       description: req.body.description,
-//       imageUrl: req.body.imageUrl,
-//     });
-//     res.status(200).json({ post: createPost });
-//   } catch (e) {
-//     res.status(404).json({ message: error.message });
-//   }
-// });
 
 router.post("/", isLoggedIn, upload.single("imageUrl"), (req, res) => {
   // console.log("CREATING POST---->", req.body);

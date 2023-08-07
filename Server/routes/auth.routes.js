@@ -11,6 +11,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 //Register get
 router.get("/signup", (req, res) => {
+  console.log(req.body);
   res.send("signup");
 });
 
@@ -35,7 +36,7 @@ router.get("/session", (req, res) => {
 
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, password, email, country } = req.body;
-  // console.log(" 👉 👉 / router.post / body", req.body);
+  console.log(" 👉 👉 SERVER signup/ router.post / body", req.body);
   if (!username) {
     return res
       .status(400)

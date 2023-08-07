@@ -33,7 +33,7 @@ export default function Signup({ authenticate }) {
     // console.log(" 👉 👉 / handleFormSubmission / credentials", credentials);
 
     signup(credentials).then((res) => {
-      console.log(" 👉 👉 / signup / res", res);
+      // console.log(" 👉 👉 / signup / res", res);
       if (!res.status) {
         // unsuccessful signup
         return setError({

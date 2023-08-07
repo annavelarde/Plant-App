@@ -11,6 +11,7 @@ export const onSuccess = (string) => {
 };
 
 export const onError = (string) => {
+  console.log(string);
   return (err) => {
     if (string) {
       console.error(`[${string}] - request failed`);

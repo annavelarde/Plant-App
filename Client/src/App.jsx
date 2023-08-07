@@ -64,7 +64,7 @@ export default function App() {
           {routes({ user, setUser, authenticate, handleLogout }).map(
             (route) => (
               <Route
-                key2="uniqueId"
+                // key2="uniqueId"
                 key={route.path}
                 path={route.path}
                 element={route.element}

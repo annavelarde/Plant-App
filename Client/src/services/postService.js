@@ -31,7 +31,7 @@ export function createPost(formBody) {
 }
 
 export function updateSinglePost(postId, formBody) {
-  console.log("------>", formBody);
+  console.log("POSTSERVICE 34", formBody);
   return postService
     .put(`/edit/${postId}`, formBody, sendUser())
     .then(onSuccess("updated-post"))

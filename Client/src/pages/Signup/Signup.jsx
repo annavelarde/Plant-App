@@ -30,7 +30,7 @@ export default function Signup({ authenticate }) {
       email,
       country,
     };
-    // console.log(" 👉 👉 / handleFormSubmission / credentials", credentials);
+    // VALIDATED-->console.log(" 👉 👉 / handleFormSubmission / credentials", credentials);
 
     signup(credentials).then((res) => {
       // console.log(" 👉 👉 / signup / res", res);

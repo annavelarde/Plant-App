@@ -10,7 +10,7 @@ import {
 import { onError, onSuccess } from "../utils/serverResponseHandlers";
 
 const userService = axios.create({
-  baseURL: `${SERVER_URL}/api/user`,
+  baseURL: `${SERVER_URL}/user`,
 });
 
 export function updateProfileImage(formBody) {

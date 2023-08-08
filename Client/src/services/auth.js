@@ -25,6 +25,7 @@ function successStatus(res) {
 const authService = axios.create({
   baseURL: `${import.meta.env.VITE_API_URI}/api/auth`,
 });
+console.log(authService.baseURL);
 
 export function login(credentials) {
   return authService
@@ -45,6 +46,7 @@ export function getLoggedIn(acessToken) {
 }
 
 export function signup(credentials) {
+  console.log("-------->", credentials);
   return authService
     .post("/signup", credentials)
     .then(successStatus)

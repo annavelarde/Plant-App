@@ -24,8 +24,19 @@ export function sendUser() {
   };
 }
 
-const BASE_URL = import.meta.env.VITE_API_URI;
+// export const REACT_APP_SERVER_URL =
+//   process.env.REACT_APP_SERVER_URL || "http://localhost:3000";
 
-// || "http://localhost:6005"
+// // const BASE_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:3000";
+// // import.meta.env.VITE_API_URI ||
 
-export const SERVER_URL = `${BASE_URL}`;
+// export const SERVER_URL = `${REACT_APP_SERVER_URL}/api`;
+
+// export const SERVER_URL = `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api`;
+// export const SERVER_URL =
+//   import.meta.env.VITE_APP_SERVER_URL
+
+// const BASE_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:3000";
+// export const SERVER_URL = `${BASE_URL}/api`;
+const BASE_URL = import.meta.env.VITE_API_URI || "http://localhost:3000/api";
+export const SERVER_URL = `${BASE_URL}/api`;

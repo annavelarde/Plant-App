@@ -1,21 +1,20 @@
 /** @format */
+
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
-import { getPosts } from "../../services/postService";
 import CardPost from "../../components/CardPost/CardPost";
+import { getPosts } from "../../services/postService";
 import "./HomePage.css";
 
-function HomePage({ user }) {
-  console.log(" 👉 👉 / HomePage / user:", user);
+function HomePage() {
   const [posts, setPosts] = useState([]);
-  // console.log(" 👉 👉 / HomePage / posts:", posts);
 
   useEffect(() => {
     getPosts().then((dbPosts) => {
       if (!dbPosts.success) {
-        return console.log(dbPosts.data);
+        console.log("unsuccesful response getting data");
+        return;
       }
-      // console.log("HOMEPAGE POSTs", dbPosts.data);
       setPosts(dbPosts.data.posts);
     });
   }, []);

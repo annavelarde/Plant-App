@@ -1,5 +1,10 @@
+/** @format */
+
 const router = require("express").Router();
+
+// Handles password encryption
 const bcrypt = require("bcrypt");
+const mongoose = require("mongoose");
 
 const Session = require("../models/Session.model");
 const UserModel = require("../models/User.model");
@@ -11,7 +16,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 //Register get
 router.get("/signup", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   res.send("signup");
 });
 
@@ -34,22 +39,26 @@ router.get("/session", (req, res) => {
     });
 });
 
+//SignupRegister
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, password, email, country } = req.body;
   console.log(" 👉 👉 SERVER signup/ router.post / body", req.body);
-  if (!username) {
-    return res
-      .status(400)
-      .json({ errorMessage: "Please provide your username." });
+
+  if (!username || username.length < 3) {
+    return res.status(400).json({
+      errorMessage: "Provide a username with more than 3 characters.",
+    });
   }
 
   if (!email) {
-    return res.status(400).json({ errorMessage: "Please provide your email." });
+    return res
+      .status(400)
+      .json({ errorMessage: "Please provide a valid email." });
   }
 
-  if (password.length < 8) {
+  if (!password || password.length < 6) {
     return res.status(400).json({
-      errorMessage: "Your password needs to be at least 8 characters long.",
+      errorMessage: "Your password needs to be at least 6 characters long.",
     });
   }
 
@@ -97,21 +106,21 @@ router.post("/signup", isLoggedOut, (req, res) => {
   });
 });
 
-//ROUTE Verification
+//LogIn
 router.post("/login", isLoggedOut, (req, res) => {
   const { email, password } = req.body;
-  // console.log(" 👉 👉 / router.post / body", body);
+  console.log(" 👉 👉 / router.post / body", req.body);
+
   if (!email) {
     return res.status(400).json({ errorMessage: "Please provide your email." });
   }
-  if (password.length < 8) {
+  if (!password || password.length < 6) {
     return res.status(400).json({
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
   }
   UserModel.findOne({ email })
     .then((user) => {
-      // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
         return res.status(400).json({ errorMessage: "Wrong credentials." });
       }
@@ -128,13 +137,11 @@ router.post("/login", isLoggedOut, (req, res) => {
       });
     })
     .catch((err) => {
-      // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
-      // you can just as easily run the res.status that is commented out below
       next(err);
-      // return res.status(500).render("login", { errorMessage: err.message });
     });
 });
 
+//LogOut
 router.delete("/logout", isLoggedIn, (req, res) => {
   Session.findByIdAndDelete(req.headers.authorization)
     .then(() => {

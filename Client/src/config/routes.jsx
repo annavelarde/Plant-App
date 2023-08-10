@@ -7,7 +7,7 @@ import * as PATHS from "../utils/paths";
 import { Navigate } from "react-router-dom";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile.jsx";
 import SinglePost from "../pages/SinglePost/SinglePost.jsx";
-import UpdateSinglePost from "../pages/UpdateSinglePost/UpdateSinglePost.jsx";
+// import UpdateSinglePost from "../pages/UpdateSinglePost/UpdateSinglePost.jsx";
 
 const routes = (props) => {
   const { user } = props;
@@ -30,6 +30,8 @@ const routes = (props) => {
       path: PATHS.SINGLE_POST_PAGE,
       element: <SinglePost {...props} />,
     },
+    //////////PROTECTED PATHS/////////////////////////////////////////////////
+
     {
       path: PATHS.CREATE_POST_PAGE,
       element: user ? (
@@ -54,11 +56,10 @@ const routes = (props) => {
         <Navigate to={PATHS.LOGIN_PAGE} replace />
       ),
     },
-
-    {
-      path: PATHS.SINGLE_POST_PAGE_EDIT,
-      element: user ? <UpdateSinglePost {...props} /> : <Signup />,
-    },
+    // {
+    //   path: PATHS.SINGLE_POST_PAGE_EDIT,
+    //   element: user ? <UpdateSinglePost {...props} /> : <Signup />,
+    // },
     {
       path: "*",
       element: <h1>404 This Page NOT EXIST!</h1>,

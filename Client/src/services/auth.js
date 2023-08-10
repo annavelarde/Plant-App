@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as USER_HELPERS from "../utils/userToken";
-// import { SERVER_URL } from "../utils/consts";
+import { SERVER_URL } from "../utils/consts.js";
 
 function internalServerError(err) {
   if (err.response && err.response.data && err.response.data.errorMessage) {
@@ -23,7 +23,7 @@ function successStatus(res) {
 }
 
 const authService = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URI}/api/auth`,
+  baseURL: `${SERVER_URL}/auth`,
 });
 console.log(authService.baseURL);
 
@@ -36,7 +36,7 @@ export function login(credentials) {
 
 export function getLoggedIn(acessToken) {
   return authService
-    .get(`/session`, {
+    .get("/session", {
       headers: {
         authorization: USER_HELPERS.getUserToken(acessToken),
       },

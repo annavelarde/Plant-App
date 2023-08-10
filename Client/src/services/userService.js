@@ -13,6 +13,8 @@ const userService = axios.create({
   baseURL: `${SERVER_URL}/user`,
 });
 
+console.log(userService.baseURL);
+
 export function updateProfileImage(formBody) {
   return userService
     .put("/updateProfileImage", formBody, sendUser())

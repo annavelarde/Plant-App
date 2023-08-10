@@ -33,9 +33,8 @@ export default function Signup({ authenticate }) {
     // VALIDATED-->console.log(" 👉 👉 / handleFormSubmission / credentials", credentials);
 
     signup(credentials).then((res) => {
-      // console.log(" 👉 👉 / signup / res", res);
       if (!res.status) {
-        // unsuccessful signup
+        console.error("Signup was unsuccessful: ", res);
         return setError({
           message: "Signup was unsuccessful!",
         });

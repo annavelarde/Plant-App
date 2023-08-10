@@ -1,12 +1,54 @@
+/** @format */
+
 const router = require("express").Router();
 const upload = require("../middleware/cloudinary");
+const bcrypt = require("bcryptjs");
+
 const User = require("../models/User.model");
 const Session = require("../models/Session.model");
 const Post = require("../models/Post.model");
-const isLoggedIn = require("../middleware/isLoggedIn");
-// const isLoggedOut = require("../middleware/isLoggedOut");
 
-// const bcrypt = require("bcryptjs");
+const isLoggedIn = require("../middleware/isLoggedIn");
+
+//updateUser
+router.patch("/edit-profile", isLoggedIn, (req, res) => {
+  const { username, password, email } = req.body;
+  const { _id } = req.user;
+
+  if (username === _id.username) {
+    return res.json({ user: req.user });
+  }
+
+  if (password === "" || password.length < 6) {
+    return res.status(400).json({
+      errorMessage: "Your password needs to be at least 6 characters long.",
+    });
+  }
+
+  if (email === _id.email) {
+    return res.json({ user: req.user });
+  }
+  const hashedPassword = bcrypt.hashSync(password, 10);
+  // User.findOne({ username }).then((foundedUser) => {
+  //   if (foundedUser) {
+  //     return res
+  //       .status(400)
+  //       .json({ errorMessage: "Username already exit. Insert another one" });
+  //   }
+
+  User.findByIdAndUpdate(
+    _id,
+    { username, password: hashedPassword, email },
+    { new: true }
+  )
+    .then((updatedUser) => {
+      res.json({ user: updatedUser });
+    })
+    .catch((error) =>
+      res.status(500).json({ errorMessage: "Something went wrong", error })
+    );
+  // });
+});
 
 //updating image
 router.put(
@@ -37,90 +79,16 @@ router.put(
   }
 );
 
-//updating profile
-router.put("/edit-profile", isLoggedIn, (req, res) => {
-  const { username, email, country } = req.body;
-  console.log(" 👉 👉 / router.patch / req:", req.body);
-  const { _id } = req.user;
-  console.log(" 👉 👉 / router.patch / user:", req.user);
-
-  //updating username
-  //   if (username === _id.username) {
-  //     return res.json({ user: req.user });
-  //   }
-
-  //   User.findOne({ username }).then((foundedUser) => {
-  //     if (foundedUser) {
-  //       return res
-  //         .status(400)
-  //         .json({ errorMessage: "Username already exit. Insert another one" });
-  //     }
-
-  //     User.findByIdAndUpdate(_id, { username }, { new: true }).then(
-  //       (updatedUser) => {
-  //         console.log(" 👉 👉 / User.findOne / updatedUser:", updatedUser);
-  //         res.json({ user: updatedUser });
-  //       }
-  //     );
-  //   });
-
-  //   //updating email
-  //   if (email === _id.email) {
-  //     return res.json({ user: req.user });
-  //   }
-
-  //   User.findOne({ email }).then((foundedUser) => {
-  //     if (foundedUser) {
-  //       return res
-  //         .status(400)
-  //         .json({ errorMessage: "Email already exit. Insert another one" });
-  //     }
-
-  //     User.findByIdAndUpdate(_id, { email }, { new: true }).then(
-  //       (updatedUser) => {
-  //         console.log(" 👉 👉 / User.findOne / updatedUser:", updatedUser);
-  //         res.json({ user: updatedUser });
-  //       }
-  //     );
-  //   });
-
-  //updating country
-  //   if (country === _id.country) {
-  //     return res.json({ user: req.user });
-  //   }
-
-  //   User.findOne({ password }).then((foundedUser) => {
-  //     if (foundedUser) {
-  //       return res
-  //         .status(400)
-  //         .json({ errorMessage: "Country already exit. Insert another one" });
-  //     }
-
-  //     User.findByIdAndUpdate(_id, { country }, { new: true }).then(
-  //       (updatedUser) => {
-  //         console.log(" 👉 👉 / User.findOne / updatedUser:", updatedUser);
-  //         res.json({ user: updatedUser });
-  //       }
-  //     );
-});
-
 //delete profile
 router.delete("/:userId", isLoggedIn, async (req, res) => {
   const { userId } = req.params;
-  console.log(" 👉 👉 / router.delete / SERVERuserId:", userId);
+  // console.log(" 👉 👉 / router.delete / SERVERuserId:", userId);
 
   //deleting all Posts
-  const userPosts = await Post.find({ author: userId });
-  const allPosts = await userPosts.map((thePost) => thePost._id);
-  console.log(" 👉 👉 / router.delete / userPosts:", userPosts);
-  console.log(" 👉 👉 / router.delete / allPosts:", allPosts);
-
-  // -----de juancarlos
-  // const userPosts = await (
-  //   await Post.find({ author: userId })
-  // ).map((post) => post._id);
+  const userPosts = (await Post.find({ author: userId })).map(
+    (post) => post._id
+  );
   // console.log(" 👉 👉 / router.delete / userPosts:", userPosts);
-  // ---termina juancarlos
 
   //deleting Session
   const userSessionId = req.headers.authorization;
@@ -140,7 +108,7 @@ router.delete("/:userId", isLoggedIn, async (req, res) => {
   }
 
   await Promise.all([
-    Post.deleteMany({ _id: { $in: allPosts } }),
+    Post.deleteMany({ _id: { $in: userPosts } }),
     User.findByIdAndDelete(userId),
     Session.findByIdAndDelete(userSessionId),
   ]);

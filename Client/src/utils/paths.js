@@ -1,7 +1,7 @@
 // UNPROTECTED PAGES
 export const HOME_PAGE = "/";
-export const SIGNUP_PAGE = "/api/auth/signup";
-export const LOGIN_PAGE = "/api/auth/login";
+export const SIGNUP_PAGE = "/auth/signup";
+export const LOGIN_PAGE = "/auth/login";
 export const SINGLE_POST_PAGE = "/posts/:postId";
 export const SINGLE_POST_PAGE_EDIT = "/posts/edit/:postId";
 

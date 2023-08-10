@@ -6,6 +6,7 @@ import { onError, onSuccess } from "../utils/serverResponseHandlers";
 const postService = axios.create({
   baseURL: `${SERVER_URL}/posts`,
 });
+console.log(postService.baseURL);
 
 export function getPosts() {
   return postService

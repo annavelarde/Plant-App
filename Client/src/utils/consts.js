@@ -38,5 +38,5 @@ export function sendUser() {
 
 // const BASE_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:3000";
 // export const SERVER_URL = `${BASE_URL}/api`;
-const BASE_URL = import.meta.env.VITE_API_URI || "http://localhost:3000/api";
+const BASE_URL = import.meta.env.VITE_API_URI;
 export const SERVER_URL = `${BASE_URL}/api`;

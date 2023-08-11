@@ -19,8 +19,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 20px;
-  min-height: 550px;
+  padding: 80px;
+  min-height: 750px;
 }
 
 .card-content {

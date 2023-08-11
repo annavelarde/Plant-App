@@ -11,7 +11,7 @@
   }
   
   .img-container {
-      height: 200px;
+      height: 190px;
       width: 200px;
       overflow: hidden;
       border-radius: 0px 0px 15px 15px;
@@ -20,8 +20,8 @@
   
   .img-container img {
       transform: skew(0deg, -13deg);
-      height: 240px;
-      margin: -20px 20px 0px -10px;
+      height: 225px;
+      margin: -40px -10px 0px -5px;
   }
 
   .inner-skew {

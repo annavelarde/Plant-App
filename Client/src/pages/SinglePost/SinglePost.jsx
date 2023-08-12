@@ -45,14 +45,13 @@ function SinglePost(props) {
   return (
     <div className="cardSinglePost">
       <div className="group">
-        <div className="overlay-image">
-          <img
-            width="100%"
-            className="imageSinglePost"
-            src={singlePost.imageUrl}
-            alt={`${singlePost.username}picture`}
-          />
-        </div>
+        <img
+          width="100%"
+          className="imageSinglePost"
+          src={singlePost.imageUrl}
+          alt={`${singlePost.username}picture`}
+        />
+
         <h3 className="title-singlePost">Title.</h3>
         <p className="text-singlePost">{singlePost.title}</p>
         <h3 className="description-singlePost">Description.</h3>
@@ -82,14 +81,14 @@ function SinglePost(props) {
             </>
           ) : (
             <>
-              {/* <Link to={`/signup`}>
+              <Link to={`/`}>
                 <button
                   type="button"
                   className="primary btn btn-secondary mb-4"
                 >
                   Back
                 </button>
-              </Link> */}
+              </Link>
             </>
           )}
         </div>

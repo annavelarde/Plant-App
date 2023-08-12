@@ -24,12 +24,14 @@
 
 
 .title{
-	font: 3em sans-serif;
+	font: 3.5em sans-serif;
 	color: #242121ee;
-	;}
+	padding: 30px 60px 0px 60px;
+
+}
 	
 .subtitle{
-font: 0.8em sans-serif;
-font-weight: 5px;
-color: #1e1c1cee;
+	font: 0.8em sans-serif;
+	font-weight: 5px;
+	color: #1e1c1cee;
 }

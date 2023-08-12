@@ -4,31 +4,23 @@
 
 .cardSinglePost{
     font-family: Montserrat, sans-serif;
-	display: flex;
-	margin: 50px;
-	width: 100%;
-	min-height: 100vh;
-	padding: 70px; 
-	position: fixed;
-} 
-.overlay-image{
-	display: flex;
-	justify-items: center ;
-}
+	display: flex; 
+	margin-left: 20px;
+	min-height: 700px;
+	padding-top: 100px;
+	position:relative; 
+}  
 
 .group{
-	display: flex;
 	align-items: left;
 	flex-direction: column;
-	
+	justify-items: center;		
 }
 
 .imageSinglePost{
-	height: 43vh;
-	background-size: cover;
+	height:50vh;
+	width: auto;
 	border-radius: 20px ;
-	overflow: hidden;
-	
 }
 
 .description-singlePost{
@@ -48,6 +40,5 @@
 .text-singlePost{
 	color: rgba(136, 127, 127, 0.861);
 	font-size: small;
-	margin-bottom: 20px;
-
+	margin-bottom: 10px;
 }

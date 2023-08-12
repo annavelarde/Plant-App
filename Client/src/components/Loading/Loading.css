@@ -4,23 +4,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: none;
+    background: none;    
+    min-height: 900px;
   }
   
   .spinner {
     width: 300px;
-    text-align: center;
+    text-align: center;  
   }
   
   .spinner > div {
     width: 36px;
     height: 36px;
     background-color: #333;
-  
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both; 
   }
   
   .spinner .bounce1 {

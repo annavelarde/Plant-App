@@ -30,6 +30,7 @@
 	align-items: center;
 	align-content: center;
 	flex-direction: column;
+
 	/* border:5px solid rgb(0, 0, 0); */
 }
 
@@ -54,7 +55,7 @@ p {
 
 .card-container {
 	background-color: #1F1A36;
-	border-radius: 20px ;
+	border-radius: 20px;
 	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
 	color: #ffffff;
 	position: relative;

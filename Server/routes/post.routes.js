@@ -7,7 +7,7 @@ const upload = require("../middleware/cloudinary");
 router.get("/", (req, res) => {
   PostModel.find({}).then((allPosts) => {
     res.json({ posts: allPosts });
-    console.log(allPosts);
+    // console.log(allPosts);
   });
 });
 
@@ -50,7 +50,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //UPDATING Single POST//
-router.patch(
+router.put(
   "/edit/:postId",
   isLoggedIn,
   upload.single("formPicture"),

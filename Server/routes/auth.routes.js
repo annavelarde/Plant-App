@@ -42,7 +42,7 @@ router.get("/session", (req, res) => {
 //SignupRegister
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, password, email, country } = req.body;
-  console.log(" 👉 👉 SERVER signup/ router.post / body", req.body);
+  // console.log(" 👉 👉 SERVER signup/ router.post / body", req.body);
 
   if (!username || username.length < 3) {
     return res.status(400).json({
@@ -109,7 +109,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 //LogIn
 router.post("/login", isLoggedOut, (req, res) => {
   const { email, password } = req.body;
-  console.log(" 👉 👉 / router.post / body", req.body);
+  // console.log(" 👉 👉 / router.post / body", req.body);
 
   if (!email) {
     return res.status(400).json({ errorMessage: "Please provide your email." });

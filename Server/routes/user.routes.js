@@ -57,7 +57,7 @@ router.put(
   upload.single("profileImage"),
   (req, res) => {
     const { userId } = req.body;
-    console.log(" 👉 👉 / body:", req.body);
+    // console.log(" 👉 👉 / body:", req.body);
 
     User.findByIdAndUpdate(
       userId,
@@ -96,12 +96,12 @@ router.delete("/:userId", isLoggedIn, async (req, res) => {
 
   //deleting User
   const deleteUser = await Session.findById(userSessionId).populate("user");
-  console.log(" 👉 👉 / router.delete / aqyuuuuuiiiiiiiii:", deleteUser);
+  // console.log(" 👉 👉 / router.delete / aqyuuuuuiiiiiiiii:", deleteUser);
 
-  console.log(" 👉 👉 / router.delete / userId:", userId);
+  // console.log(" 👉 👉 / router.delete / userId:", userId);
 
   if (deleteUser.user._id.toString() !== userId) {
-    console.log("We are here--", deleteUser.user._id.toString());
+    // console.log("We are here--", deleteUser.user._id.toString());
     return res.status(404).json({
       errorMessage: "you are not allow to perform this action",
     });

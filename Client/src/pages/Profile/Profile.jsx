@@ -4,7 +4,7 @@ import Loading from "../../components/Loading/Loading";
 import { useState } from "react";
 import { deleteUser } from "../../services/userService";
 import * as PATH from "../../utils/paths";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Profile(props) {
   const { user, setUser } = props;
@@ -68,9 +68,12 @@ export default function Profile(props) {
             <li>Node</li>
           </ul>
           <br />
-          <button className="primary btn btn-secondary mb-4">
+          {/* <button className="primary btn btn-secondary mb-4">
             <a href="/profile/edit">Edit Profile</a>
-          </button>
+          </button> */}
+          <Link to="/profile/edit">
+            <button className="primary btn btn-secondary mb-4">Edit</button>
+          </Link>
           {user._id && (
             <button
               className="primary ghost btn btn-secondary mb-4"

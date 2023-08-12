@@ -8,7 +8,7 @@ import {
 import * as PATHS from "../../utils/paths";
 import "./UpdateProfile.css";
 
-const blancForm = {
+const blankForm = {
   username: "",
   email: "",
   password: "",
@@ -32,7 +32,7 @@ function UpdateProfile(props) {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const [infoUser, setInfoUser] = useState(blancForm);
+  const [infoUser, setInfoUser] = useState(blankForm);
   // console.log(" 👉 👉 / UpdateProfile / infoUser:", infoUser);
 
   //main form
@@ -52,16 +52,13 @@ function UpdateProfile(props) {
     updateProfileImage(infoUser)
       .then((res) => {
         if (!res.success) {
-          setError(response.data);
+          setError(res.data);
           setIsLoading(false);
           return;
         }
         // setUser({ ...user, profileImage: res.data.profileImage });
-        setUser(response.data.user);
-        console.log(
-          " 👉 👉 / updateProfileImage / response:",
-          response.data.user
-        );
+        setUser(res.data.user);
+        console.log(" 👉 👉 / updateProfileImage / response:", res.data.user);
       })
       .finally(() => {
         setIsLoading(false);
@@ -97,8 +94,8 @@ function UpdateProfile(props) {
                 className="round"
                 width="35%"
                 height="auto"
-                src={user.profileImage}
-                alt={isLoading ? user.chosenPicture : user.profileImage}
+                src={isLoading ? chosenPicture : user.profileImage}
+                alt={user.profileImage}
               />
               <div>
                 {error && (

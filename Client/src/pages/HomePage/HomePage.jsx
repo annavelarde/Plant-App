@@ -13,7 +13,7 @@ function HomePage(props) {
   useEffect(() => {
     getPosts().then((dbPosts) => {
       if (!dbPosts.success) {
-        console.log("unsuccesful response getting data");
+        // console.log("unsuccesful response getting data");
         return;
       }
       setPosts(dbPosts.data.posts);

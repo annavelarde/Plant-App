@@ -13,7 +13,7 @@ const userService = axios.create({
   baseURL: `${SERVER_URL}/user`,
 });
 
-console.log(userService.baseURL);
+// console.log(userService.baseURL);
 
 export function updateProfileImage(formBody) {
   return userService
@@ -30,7 +30,7 @@ export function updatingUserName(username) {
 }
 
 export function deleteUser(userId) {
-  console.log("👉 User to delete", { userId });
+  // console.log("👉 User to delete", { userId });
   return userService
     .delete(`/${userId}`, {
       headers: {

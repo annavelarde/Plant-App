@@ -10,7 +10,7 @@ export default function Profile(props) {
   const { user, setUser } = props;
 
   // console.log(" 👉 👉 / Profile / setUser:", setUser);
-  console.log(" 👉 👉 / Profile / userID:", user._id);
+  // console.log(" 👉 👉 / Profile / userID:", user._id);
   const [error, setError] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();

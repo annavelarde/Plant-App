@@ -6,7 +6,7 @@ import { onError, onSuccess } from "../utils/serverResponseHandlers";
 const postService = axios.create({
   baseURL: `${SERVER_URL}/posts`,
 });
-console.log(postService.baseURL);
+// console.log(postService.baseURL);
 
 export function getPosts() {
   return postService
@@ -24,7 +24,7 @@ export function getSinglePost(postId) {
 }
 
 export function createPost(formBody) {
-  console.log(`Post created 👇`, formBody);
+  // console.log(`Post created 👇`, formBody);
   return postService
     .post("/", formBody, sendUser())
     .then(onSuccess("create-post"))
@@ -32,7 +32,7 @@ export function createPost(formBody) {
 }
 
 export function updateSinglePost(postId, formBody) {
-  console.log("POSTSERVICE 34", formBody);
+  // console.log("POSTSERVICE 34", formBody);
   return postService
     .put(`/edit/${postId}`, formBody, sendUser())
     .then(onSuccess("updated-post"))

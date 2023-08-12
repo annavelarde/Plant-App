@@ -3,7 +3,7 @@ import "./CardPost.css";
 import { Link } from "react-router-dom";
 
 export default function CardPost({ post }) {
-  console.log(" 👉 👉 / CardPost / post:", post);
+  // console.log(" 👉 👉 / CardPost / post:", post);
   return (
     <div className="a-box">
       <div className="img-container">

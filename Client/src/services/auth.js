@@ -25,7 +25,7 @@ function successStatus(res) {
 const authService = axios.create({
   baseURL: `${SERVER_URL}/auth`,
 });
-console.log(authService.baseURL);
+// console.log(authService.baseURL);
 
 export function login(credentials) {
   return authService
@@ -46,7 +46,7 @@ export function getLoggedIn(acessToken) {
 }
 
 export function signup(credentials) {
-  console.log("-------->", credentials);
+  // console.log("-------->", credentials);
   return authService
     .post("/signup", credentials)
     .then(successStatus)

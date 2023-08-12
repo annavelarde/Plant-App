@@ -12,7 +12,7 @@
 }
 .header{
 	width: 100%;
-	height: 45vh;
+	height: 50vh;
 	background: linear-gradient(rgba(0,0,0,0.3),rgba(227, 227, 227, 0.7)), url('https://imgs.search.brave.com/4Z1Q0pnDCGzaFw_FxhZhIHFg4U3leAvdQxVPcFeDiv8/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9pMS53/cC5jb20vd3d3Lndl/bHNoZGVzaWduc3R1/ZGlvLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvUGxhbnRzLUlu/dGVyaW9yLURlc2ln/bi0xLmpwZWc_Zml0/PTI0MzIlMkMxODcz/JnNzbD0x');
 	/* background: linear-gradient(rgba(0,0,0,0.3),rgba(227, 227, 227, 0.7)), url('https://imgs.search.brave.com/lunXI8Xpn_d2o9DawzLoatzhE9kF5FW53uLgQcW_y40/rs:fit:910:604:1/g:ce/aHR0cHM6Ly9jMS53/YWxscGFwZXJmbGFy/ZS5jb20vcHJldmll/dy82MDUvNzgwLzg0/OC9uYXR1cmUtYmVh/dXR5LWhhcm1vbnkt/bWFrZXVwLmpwZw'); */
 	background-size: cover;
@@ -24,9 +24,9 @@
 
 
 .title{
-	font: 3.5em sans-serif;
+	font: 3.2em sans-serif;
 	color: #242121ee;
-	padding: 30px 60px 0px 60px;
+	padding: 50px 60px 0px 60px;
 
 }
 	

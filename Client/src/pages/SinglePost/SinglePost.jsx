@@ -10,9 +10,9 @@ function SinglePost(props) {
   const { user } = props;
 
   const userId = user ? user._id : null;
-  console.log(" 👉 👉 / SinglePost / user:", user);
-  console.log(" 👉 👉 / SinglePost / postId", postId);
-  console.log(userId);
+  // console.log(" 👉 👉 / SinglePost / user:", user);
+  // console.log(" 👉 👉 / SinglePost / postId", postId);
+  // console.log(userId);
 
   const [singlePost, setSinglePost] = useState({});
   const navigate = useNavigate();
@@ -61,7 +61,7 @@ function SinglePost(props) {
           singlePost.author &&
           singlePost.author._id === props.user._id ? (
             <>
-              <Link to={`/posts/${postId}`}>
+              <Link to={`/posts/update/${postId}`}>
                 <button
                   type="button"
                   className="primary btn btn-secondary mb-4"

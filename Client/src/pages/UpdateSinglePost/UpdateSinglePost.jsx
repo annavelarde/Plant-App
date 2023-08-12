@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as PATH from "../../utils/paths";
 import "./UpdateSinglePost.css";
 import Loading from "../../components/Loading/Loading";
+import { Link } from "react-router-dom";
 
 const initialFormData = {
   imageUrl: "",
@@ -94,39 +95,53 @@ function UpdateSinglePost() {
             alt={formPicture.name ? formPicture.name : "Upload an Image"}
           />
         </div>
-        <form onSubmit={handleSubmit}>
-          <h1>Update your Post</h1>
-          {error && <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>}
-          <label htmlFor="fileInput">
-            <input
-              type="file"
-              id="fileInput"
-              onChange={handleImageInput}
-              name="post-image"
-            />
-          </label>
-          <div>
-            <b>Post Title:</b>
-            <input
-              type="text"
-              placeholder={title}
-              onChange={handleTextInput}
-              name="title"
-              value={title}
-            />{" "}
-            <b>Post Description:</b>
-            <textarea
-              name="description"
-              value={description}
-              type="text"
-              placeholder={description}
-              onChange={handleTextInput}
-            ></textarea>
-          </div>
-          <button type="submit" className="primary ghost">
-            Publish
-          </button>
-        </form>
+        <div className="divEditContent">
+          <form onSubmit={handleSubmit}>
+            <h1 className="titleUpdateSingle">Update your Post</h1>
+            {error && (
+              <p style={{ color: "teal", fontWeight: "830" }}>{error}</p>
+            )}
+            <div className="fileInputLabel">
+              <label htmlFor="fileInput">
+                <input
+                  className="fileInput"
+                  type="file"
+                  id="fileInput"
+                  onChange={handleImageInput}
+                  name="post-image"
+                />
+              </label>
+            </div>
+            <div>
+              <p>Post Title:</p>
+              <input
+                className="inputFormTitle"
+                type="text"
+                placeholder={title}
+                onChange={handleTextInput}
+                name="title"
+                value={title}
+              />{" "}
+              <p>Post Description:</p>
+              <textarea
+                className="inputFormTextarea"
+                name="description"
+                value={description}
+                type="text"
+                placeholder={description}
+                onChange={handleTextInput}
+              ></textarea>
+            </div>
+            <button type="submit" className="primary ghost">
+              Publish
+            </button>
+            <Link to={`/`}>
+              <button type="button" className="primary btn btn-secondary mb-4">
+                Back
+              </button>
+            </Link>
+          </form>
+        </div>
       </div>
     </div>
   );

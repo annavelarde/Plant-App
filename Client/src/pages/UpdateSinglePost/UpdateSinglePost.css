@@ -1,5 +1,75 @@
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-body {
-    font-family: "Oxygen", sans-serif;
-  } 
 
+  .cardSinglePost{
+    font-family: Montserrat, sans-serif;
+    display: flex; 
+    margin-left: 20px;
+    min-height: 640px;
+    padding-top: 100px;
+    position:relative; 
+  }  
+
+.fileInput{
+    font-family: Montserrat, sans-serif;
+    /* background-color: #ebeee4; */
+    border-radius: 4px;
+    padding-right: 10px;
+}
+
+.fileInputLabel{
+  padding-bottom: 15px;
+}
+
+  .inputFormTitle,
+  .inputFormTextarea {
+    font-size: small;
+    width: 100%; 
+    color: #a2a2a2;
+    border: #e6e6e6;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: #f3f4f1;
+    margin: 10px;
+    font-family: Montserrat, sans-serif;
+  }
+  .divEditContent{
+    padding: 20px 300px 0px 20px;
+  }
+
+  .titleUpdateSingle{
+    padding-bottom: 15px;
+  }
+
+  .group{
+    align-items: left;
+    flex-direction: column;
+    justify-items: center;	
+  }
+  
+  .imageSinglePost{
+    height:35vh;
+    width: auto;
+    border-radius: 20px ;
+  }
+  
+  .description-singlePost{
+    font-size: medium;
+    color: rgb(0, 0, 0);
+  }
+  
+  .title-singlePost{
+    font-size: medium;
+    margin-top: 7% ;
+  }
+  
+  .buttons-singlepost{
+    margin: 13%;
+  }
+  
+  .text-singlePost{
+    color: rgba(136, 127, 127, 0.861);
+    font-size: small;
+    margin-bottom: 10px;
+  }
+  

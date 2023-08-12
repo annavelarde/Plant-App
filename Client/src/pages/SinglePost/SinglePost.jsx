@@ -42,6 +42,15 @@ function SinglePost(props) {
       });
   }
 
+  const alertDelete = () => {
+    const confirmDelete = window.confirm(
+      " ⚠️ Are you sure you want to delete this post?"
+    );
+    if (confirmDelete) {
+      handleDeletePost();
+    }
+  };
+
   return (
     <div className="cardSinglePost">
       <div className="group">
@@ -72,7 +81,7 @@ function SinglePost(props) {
               <Link>
                 <button
                   type="button"
-                  onClick={handleDeletePost}
+                  onClick={alertDelete}
                   className="primary ghost"
                 >
                   Delete

@@ -84,6 +84,7 @@ function UpdateSinglePost() {
   if (isLoading) {
     return <Loading />;
   }
+
   return (
     <div className="cardSinglePost">
       <div className="group">

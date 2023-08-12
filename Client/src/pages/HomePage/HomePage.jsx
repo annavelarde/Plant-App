@@ -6,8 +6,9 @@ import CardPost from "../../components/CardPost/CardPost";
 import { getPosts } from "../../services/postService";
 import "./HomePage.css";
 
-function HomePage() {
+function HomePage(props) {
   const [posts, setPosts] = useState([]);
+  const user = props.user;
 
   useEffect(() => {
     getPosts().then((dbPosts) => {
@@ -35,7 +36,9 @@ function HomePage() {
         {posts.length === 0 ? (
           <h3 className="h3text">Please write a post 🌻</h3>
         ) : (
-          posts.map((post) => <CardPost key={post._id} post={post} />)
+          posts.map((post) => (
+            <CardPost key={post._id} post={post} user={user} />
+          ))
         )}
       </div>
       <div className="calltoactionTitle">

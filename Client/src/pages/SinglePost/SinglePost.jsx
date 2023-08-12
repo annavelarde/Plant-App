@@ -62,7 +62,7 @@ function SinglePost(props) {
           singlePost.author &&
           singlePost.author._id === props.user._id ? (
             <>
-              <Link to={`/posts/edit/${postId}`}>
+              <Link to={`/posts/${postId}`}>
                 <button
                   type="button"
                   className="primary btn btn-secondary mb-4"

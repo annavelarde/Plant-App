@@ -31,8 +31,8 @@ router.post("/", isLoggedIn, upload.single("imageUrl"), (req, res) => {
     });
 });
 
-// READ/FIND ID POST//
-router.get("/:id", isLoggedIn, async (req, res) => {
+//Getting a single post //
+router.get("/:id", async (req, res) => {
   // res.send("singlepost");
   // console.log("PARAAAAMMMMMSSSS", req.params);
   try {

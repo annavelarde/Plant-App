@@ -29,9 +29,14 @@ function HomePage() {
         </p>
       </div>
       <div className="individual-posts">
-        {posts.map((post) => (
+        {/* {posts.map((post) => (
           <CardPost key={post._id} post={post} />
-        ))}
+        ))} */}
+        {posts.length === 0 ? (
+          <h3 className="h3text">Please write a post 🌻</h3>
+        ) : (
+          posts.map((post) => <CardPost key={post._id} post={post} />)
+        )}
       </div>
       <div className="calltoactionTitle">
         <h2 className="calltoaction">

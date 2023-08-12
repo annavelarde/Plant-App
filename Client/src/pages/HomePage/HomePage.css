@@ -66,5 +66,12 @@ body {
     color: rgb(97, 97, 97); 
     background-color: #d4d4d3b2;
     font-size: medium;
-    
+}
+
+.h3text{
+    font-family: "Oxygen", sans-serif;
+    color:#788678;
+    font-weight: 400;
+    padding: 100px;
+    font-size: 25px;
 }

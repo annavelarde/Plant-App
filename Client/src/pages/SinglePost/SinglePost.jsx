@@ -9,9 +9,10 @@ function SinglePost(props) {
   const { postId } = useParams();
   const { user } = props;
 
-  const userId = user._id;
-  // console.log(" 👉 👉 / SinglePost / user:", user);
-  // console.log(" 👉 👉 / SinglePost / postId", postId);
+  const userId = user ? user._id : null;
+  console.log(" 👉 👉 / SinglePost / user:", user);
+  console.log(" 👉 👉 / SinglePost / postId", postId);
+  console.log(userId);
 
   const [singlePost, setSinglePost] = useState({});
   const navigate = useNavigate();
@@ -57,7 +58,9 @@ function SinglePost(props) {
         <h3 className="description-singlePost">Description.</h3>
         <p className="text-singlePost">{singlePost.description}</p>
         <div className="buttons-single">
-          {props.user ? (
+          {props.user &&
+          singlePost.author &&
+          singlePost.author._id === props.user._id ? (
             <>
               <Link to={`/posts/edit/${postId}`}>
                 <button
@@ -79,14 +82,14 @@ function SinglePost(props) {
             </>
           ) : (
             <>
-              <Link to={`/signup`}>
+              {/* <Link to={`/signup`}>
                 <button
                   type="button"
                   className="primary btn btn-secondary mb-4"
                 >
                   Back
                 </button>
-              </Link>
+              </Link> */}
             </>
           )}
         </div>

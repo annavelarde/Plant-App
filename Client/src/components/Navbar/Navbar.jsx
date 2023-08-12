@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = (props) => {
+  // console.log(props);
   const { user } = props;
 
   return (

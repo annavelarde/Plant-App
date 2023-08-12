@@ -30,7 +30,7 @@ nav {
 }
 
 .authLink + .authLink {
-  padding: 1em;
+  padding: 1.2em;
 }
 
 .authLink:hover {
@@ -39,6 +39,8 @@ nav {
 .nav__authLinks {
   display: flex;
   align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .nav-logoutbtn {
   background: linear-gradient(to right, #bcc4b5, #9da19c);

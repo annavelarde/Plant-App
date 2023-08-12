@@ -6,7 +6,6 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	/* border: 5px solid rgb(0, 0, 0); */
 	display: flex;
 	width:100vw;
 	height: 100vh;
@@ -17,7 +16,6 @@
 
   .elements-profile{
 	display: flex;
-	/* border: 5px solid rgb(151, 242, 39); */
 	position: fixed;	
 }
   
@@ -40,10 +38,9 @@
   
   .style {
 	font-size: 14px;
-	line-height: 21px;
+	line-height: 15px;
 	display: flex;
 	justify-content: left;
-	padding: 7px;
   }
   
   .card-body-update {
@@ -56,7 +53,6 @@
 	width: 100%;
 	padding: 30px;
 	min-height: 500px;
-
   }
   
 
@@ -69,7 +65,8 @@
 	width: 100%; 
 	border: 5px solid#1f1a36;;
 	text-align: center;
-	
+	padding: 5px;
+	padding-left: 30px;
   }
   
   button.primary {

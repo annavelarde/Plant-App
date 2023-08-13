@@ -1,42 +1,58 @@
-import React from "react";
 import "./Profile.css";
 import Loading from "../../components/Loading/Loading";
 import { useState } from "react";
 import { deleteUser } from "../../services/userService";
-import * as PATH from "../../utils/paths";
+import * as PATHS from "../../utils/paths";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Profile(props) {
   const { user, setUser } = props;
 
-  // console.log(" 👉 👉 / Profile / setUser:", setUser);
-  // console.log(" 👉 👉 / Profile / userID:", user._id);
+  console.log(" 👉 👉 / Profile / setUser:", setUser);
+  console.log(" 👉 👉 / Profile / userID:", user._id);
   const [error, setError] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   function handleDeleteUser(event) {
     event.preventDefault();
-    setIsLoading(true);
-    deleteUser(user._id)
-      .then((res) => {
-        if (!res.success) {
-          return setError(res.data);
-        }
-      })
-      .finally(() => {
-        if (error) {
-          return setIsLoading(false);
-        }
-        console.log("User was succesfull deleted");
-        return setUser(null);
-      });
-    navigate(PATH.HOME_PAGE);
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete your profile?"
+    );
+    if (confirmDelete) {
+      setIsLoading(true);
+      deleteUser(user._id)
+        .then((res) => {
+          if (res.success) {
+            // Profile deleted successfully
+            setUser(null); // Clear the user data
+            navigate(PATHS.HOME_PAGE);
+            // window.location.reload();
+          } else {
+            setError(res.data);
+          }
+        })
+        .catch((error) => {
+          setError("An error occurred while deleting the profile.", error);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
   }
 
   if (isLoading) {
     return <Loading />;
   }
+
+  // const deleteAlert = () => {
+  //   const confirmDelete = window.confirm(
+  //     "⚠️ Are you sure you want to delete your session?"
+  //   );
+  //   if (confirmDelete) {
+  //     handleDeleteUser();
+  //   }
+  // };
 
   return (
     <div className="profile-page">
@@ -45,8 +61,8 @@ export default function Profile(props) {
           className="round"
           width="35%"
           height="auto"
-          src="/images/Profile-PNG-Pic.png"
-          alt="user"
+          src={user.imageFile ? user.imageFile : "/images/Profile-PNG-Pic.png"}
+          alt="user image"
         />
         <h3 className="user">
           {user.username} | {user.country}
@@ -74,15 +90,17 @@ export default function Profile(props) {
           <Link to="/profile/edit">
             <button className="primary btn btn-secondary mb-4">Edit</button>
           </Link>
-          {user._id && (
-            <button
-              className="primary ghost btn btn-secondary mb-4"
-              type="delete"
-              onClick={handleDeleteUser}
-            >
-              Delete
-            </button>
-          )}
+          <Link>
+            {props.user._id && (
+              <button
+                className="primary ghost btn btn-secondary mb-4"
+                type="delete"
+                onClick={handleDeleteUser}
+              >
+                Delete
+              </button>
+            )}
+          </Link>
         </div>
       </div>
     </div>

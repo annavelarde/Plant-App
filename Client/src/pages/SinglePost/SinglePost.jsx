@@ -42,7 +42,7 @@ function SinglePost(props) {
       });
   }
 
-  const alertDelete = () => {
+  const deleteAlert = () => {
     const confirmDelete = window.confirm(
       " ⚠️ Are you sure you want to delete this post?"
     );
@@ -81,7 +81,7 @@ function SinglePost(props) {
               <Link>
                 <button
                   type="button"
-                  onClick={alertDelete}
+                  onClick={deleteAlert}
                   className="primary ghost"
                 >
                   Delete

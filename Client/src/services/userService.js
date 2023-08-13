@@ -15,16 +15,16 @@ const userService = axios.create({
 
 // console.log(userService.baseURL);
 
-export function updateProfileImage(formBody) {
+export function updateProfileImage(imageFile) {
   return userService
-    .put("/updateProfileImage", formBody, sendUser())
+    .put("/updateProfileImage", imageFile, sendUser())
     .then(onSuccess("update-profile"))
     .catch(onError("update-profile"));
 }
 
-export function updatingUserName(username) {
+export function updatingUser(userFromData) {
   return userService
-    .put("/edit-profile", { username }, sendUser())
+    .put("/edit-profile", userFromData, sendUser())
     .then(onSuccess("updated-account"))
     .catch(onError("updated-account"));
 }

@@ -12,11 +12,15 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 //updateUser
 router.patch("/edit-profile", isLoggedIn, (req, res) => {
-  const { username, password, email } = req.body;
-  const { _id } = req.user;
+  const { username, password, country, email } = req.body;
+  const { _id } = req.user; //identifying user
 
-  if (username === _id.username) {
+  if (username === "" || username.length < 3) {
     return res.json({ user: req.user });
+  }
+
+  if (country === "" || country.length < 3) {
+    return res.json({ country: req.user });
   }
 
   if (password === "" || password.length < 6) {
@@ -28,6 +32,7 @@ router.patch("/edit-profile", isLoggedIn, (req, res) => {
   if (email === _id.email) {
     return res.json({ user: req.user });
   }
+
   const hashedPassword = bcrypt.hashSync(password, 10);
   // User.findOne({ username }).then((foundedUser) => {
   //   if (foundedUser) {
@@ -38,7 +43,7 @@ router.patch("/edit-profile", isLoggedIn, (req, res) => {
 
   User.findByIdAndUpdate(
     _id,
-    { username, password: hashedPassword, email },
+    { username, password: hashedPassword, email, country },
     { new: true }
   )
     .then((updatedUser) => {
@@ -54,26 +59,22 @@ router.patch("/edit-profile", isLoggedIn, (req, res) => {
 router.put(
   "/updateProfileImage",
   isLoggedIn,
-  upload.single("profileImage"),
+  upload.single("imageFile"),
   (req, res) => {
     const { userId } = req.body;
-    // console.log(" 👉 👉 / body:", req.body);
+    console.log(" 👉 👉 / body:", req.body);
 
-    User.findByIdAndUpdate(
-      userId,
-      { profileImage: req.file.path },
-      { new: true }
-    )
+    User.findByIdAndUpdate(userId, { imageFile: req.file.path }, { new: true })
       .then((updatedUser) => {
         res.json({
           success: true,
-          profileImage: updatedUser.profileImage,
+          imageFile: updatedUser.imageFile,
         });
       })
       .catch((err) => {
         res.json({
           success: false,
-          message: "Server error uploading image",
+          message: err.message,
         });
       });
   }
@@ -96,12 +97,12 @@ router.delete("/:userId", isLoggedIn, async (req, res) => {
 
   //deleting User
   const deleteUser = await Session.findById(userSessionId).populate("user");
-  // console.log(" 👉 👉 / router.delete / aqyuuuuuiiiiiiiii:", deleteUser);
+  console.log(" 👉 👉 / router.delete / aqyuuuuuiiiiiiiii:", deleteUser);
 
-  // console.log(" 👉 👉 / router.delete / userId:", userId);
+  console.log(" 👉 👉 / router.delete / userId:", userId);
 
   if (deleteUser.user._id.toString() !== userId) {
-    // console.log("We are here--", deleteUser.user._id.toString());
+    console.log("We are here--", deleteUser.user._id.toString());
     return res.status(404).json({
       errorMessage: "you are not allow to perform this action",
     });

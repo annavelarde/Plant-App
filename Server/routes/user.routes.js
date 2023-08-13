@@ -11,16 +11,22 @@ const Post = require("../models/Post.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 //updateUser
-router.patch("/edit-profile", isLoggedIn, (req, res) => {
+router.patch("/edit", isLoggedIn, (req, res) => {
+  console.log("Received edit-profile request:", req.body); // Add this line
+
   const { username, password, country, email } = req.body;
   const { _id } = req.user; //identifying user
 
   if (username === "" || username.length < 3) {
-    return res.json({ user: req.user });
+    return res.status(400).json({
+      errorMessage: "Provide a username with more than 3 characters.",
+    });
   }
 
   if (country === "" || country.length < 3) {
-    return res.json({ country: req.user });
+    return res
+      .status(400)
+      .json({ errorMessage: "Please provide a valid country." });
   }
 
   if (password === "" || password.length < 6) {
@@ -30,16 +36,12 @@ router.patch("/edit-profile", isLoggedIn, (req, res) => {
   }
 
   if (email === _id.email) {
-    return res.json({ user: req.user });
+    return res.status(400).json({
+      errorMessage: "Please provide a valid email.",
+    });
   }
 
   const hashedPassword = bcrypt.hashSync(password, 10);
-  // User.findOne({ username }).then((foundedUser) => {
-  //   if (foundedUser) {
-  //     return res
-  //       .status(400)
-  //       .json({ errorMessage: "Username already exit. Insert another one" });
-  //   }
 
   User.findByIdAndUpdate(
     _id,
@@ -47,7 +49,7 @@ router.patch("/edit-profile", isLoggedIn, (req, res) => {
     { new: true }
   )
     .then((updatedUser) => {
-      res.json({ user: updatedUser });
+      res.status(200).json({ user: updatedUser });
     })
     .catch((error) =>
       res.status(500).json({ errorMessage: "Something went wrong", error })
@@ -56,17 +58,17 @@ router.patch("/edit-profile", isLoggedIn, (req, res) => {
 });
 
 //updating image
-router.put(
+router.patch(
   "/updateProfileImage",
   isLoggedIn,
   upload.single("imageFile"),
-  (req, res) => {
+  (req, res, next) => {
     const { userId } = req.body;
-    console.log(" 👉 👉 / body:", req.body);
+    console.log("Received updateProfileImage request:", req.body); // Add this line
 
     User.findByIdAndUpdate(userId, { imageFile: req.file.path }, { new: true })
       .then((updatedUser) => {
-        res.json({
+        res.status(200).json({
           success: true,
           imageFile: updatedUser.imageFile,
         });

@@ -10,23 +10,58 @@ import {
 import { onError, onSuccess } from "../utils/serverResponseHandlers";
 
 const userService = axios.create({
-  baseURL: `${SERVER_URL}/user`,
+  baseURL: `${SERVER_URL}/api/user`,
 });
 
-// console.log(userService.baseURL);
+// export function updateProfileImage(imageFile) {
+//   console.log("Updating profile image:", imageFile); // Add this line
+
+//   return userService
+//     .put("/updateProfileImage", imageFile, sendUser())
+//     .then(onSuccess("update-profile"))
+//     .catch(onError("update-profile"));
+// }
 
 export function updateProfileImage(imageFile) {
+  // console.log("Updating profile image:", imageFile);
+
+  // const formData = new FormData();
+  // formData.append("imageFile", imageFile);
+
   return userService
-    .put("/updateProfileImage", imageFile, sendUser())
-    .then(onSuccess("update-profile"))
-    .catch(onError("update-profile"));
+    .patch("/updateProfileImage", imageFile, sendUser())
+    .then((res) => {
+      console.log("Response: updadte-profile-image", res);
+      return res.data; // Return the data from the response
+    })
+    .catch((error) => {
+      console.error("[update-profile] - request failed", error);
+      throw error;
+    });
 }
 
-export function updatingUser(userFromData) {
+// export function updatingUser(userFromData) {
+//   console.log("Updating user:", userFromData); // Add this line
+
+//   return userService
+//     .put("/edit-profile", userFromData, sendUser())
+//     .then(onSuccess("updated-account"))
+//     .catch(onError("updated-account"));
+// }
+
+export function updatingUser(userData) {
+  console.log("Updating user:", userData);
+
   return userService
-    .put("/edit-profile", userFromData, sendUser())
-    .then(onSuccess("updated-account"))
-    .catch(onError("updated-account"));
+    .patch("/edit", userData, sendUser())
+    .then((res) => {
+      console.log("Response:", res);
+      return res.data; // Return the data from the response
+    })
+    .catch((error) => {
+      console.error("[updated-account] - request failed", error);
+      throw error;
+    });
 }
 
 export function deleteUser(userId) {

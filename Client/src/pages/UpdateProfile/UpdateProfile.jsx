@@ -1,25 +1,42 @@
 import { useState } from "react";
 import { updateProfileImage, updatingUser } from "../../services/userService";
 import "./UpdateProfile.css";
+import LoadingComponent from "../../components/Loading/Loading";
+import { useNavigate, Link } from "react-router-dom";
+import * as PATH from "../../utils/paths";
 
-const userForm = {
-  username: "",
-  email: "",
-  password: "",
-  country: "",
-  imageFile: "",
-};
-
-const UpdateProfile = (props) => {
+function UpdateProfile(props) {
   const { user, setUser } = props;
 
   const userId = user._id;
+
+  const userForm = {
+    username: "",
+    email: "",
+    password: "",
+    country: "",
+  };
 
   const [infoUser, setInfoUser] = useState(userForm);
   const [chosenPicture, setChosenPicture] = useState("");
   const [inputKey, setInputKey] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  //User upload input
+  const handleChangeText = (e) => {
+    const { name, value } = e.target;
+    setInfoUser({ ...infoUser, [name]: value });
+  };
+
+  //Image upload input
+  const handleImageInput = (e) => {
+    console.log(e.target.files[0]);
+    const imageFile = e.target.files[0];
+    setChosenPicture(imageFile);
+    console.log(imageFile);
+  };
 
   //updating userFromData
   const handleFromSubmit = (e) => {
@@ -31,58 +48,90 @@ const UpdateProfile = (props) => {
       .then((res) => {
         if (!res.success) {
           setError(res.data);
+          console.log(res.data);
           setIsLoading(false);
           return;
         }
         setUser(res.data.user);
         setIsLoading(false);
       })
-      .finally(() => {
+      .catch((error) => {
+        console.error("Error updating user:", error);
+        setError("An error occurred while updating the user.");
         setIsLoading(false);
       });
   };
 
-  //User upload input
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInfoUser({ ...infoUser, [name]: value });
-  };
+  // const handleProfilePicture = (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   setError("");
 
-  //Image upload input
-  const handleImageInput = (e) => {
-    console.log(e.target.files[0]);
-    const imageFromInput = e.target.files[0];
-    setChosenPicture(imageFromInput);
-  };
+  //   if (!chosenPicture) {
+  //     setError("Don't forget to update your profile image!");
+  //     setIsLoading(false);
+  //     return;
+  //   }
 
-  const handleProfilePicture = (e) => {
+  //   const formBody = new FormData();
+  //   formBody.append("imageFile", chosenPicture);
+  //   formBody.append("userId", userId);
+
+  //   console.log("FormBody 74", formBody);
+
+  //   updateProfileImage(formBody)
+  //     .then((res) => {
+  //       console.log(res);
+  //       if (!res.success) {
+  //         setError("Something went wrong while updating the profile image.");
+  //       } else {
+  //         setUser({ ...user, imageFile: res.data.imageFile }); // Update the user's profileImage
+  //         navigate(PATH.HOME_PAGE);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("[update-profile] - request failed", error);
+  //       setError("An error occurred while updating the profile image.");
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // };
+
+  const handleProfilePicture = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError(false);
+    setError("");
 
     if (!chosenPicture) {
       setError("Don't forget to update your profile image!");
       setIsLoading(false);
       return;
     }
-    const formBody = new FormData();
-    formBody.append("imageFile", chosenPicture); //profileImage  comes from index router.post
-    formBody.append("userId", userId);
-    updateProfileImage(formBody)
-      .then((res) => {
-        // console.log(response);
-        if (!res.success) {
-          setError("Something is wrong");
-        }
-        setUser({ ...user, imageFile: res.data.imageFile });
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+
+    try {
+      const formBody = new FormData();
+      formBody.append("imageFile", chosenPicture);
+      formBody.append("userId", userId);
+
+      const response = await updateProfileImage(formBody);
+
+      if (response.success) {
+        setUser({ ...user, imageFile: response.imageFile }); // Update the user's profileImage
+        navigate(PATH.USER_PROFILE);
+      } else {
+        setError("Something went wrong while updating the profile image.");
+      }
+    } catch (error) {
+      console.error("[update-profile] - request failed", error);
+      setError("An error occurred while updating the profile image.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isLoading) {
-    return <Loading />;
+    return <LoadingComponent />;
   }
 
   return (
@@ -100,7 +149,11 @@ const UpdateProfile = (props) => {
                 className="round"
                 width="35%"
                 height="auto"
-                src={user.imageFile && user.imageFile}
+                src={
+                  user.imageFile
+                    ? user.imageFile
+                    : "/images/Profile-PNG-Pic.png"
+                }
                 alt="User picture"
               />
               <div>
@@ -124,7 +177,7 @@ const UpdateProfile = (props) => {
                         name="username"
                         placeholder={user.username}
                         value={infoUser.username}
-                        onChange={handleChange}
+                        onChange={handleChangeText}
                       />
                       <p className="style">Email:</p>
                       <input
@@ -132,7 +185,7 @@ const UpdateProfile = (props) => {
                         name="email"
                         placeholder={user.email}
                         value={infoUser.email}
-                        onChange={handleChange}
+                        onChange={handleChangeText}
                       />
                       <p className="style">Password:</p>
                       <input
@@ -140,7 +193,7 @@ const UpdateProfile = (props) => {
                         name="password"
                         placeholder="Enter new password"
                         value={infoUser.password}
-                        onChange={handleChange}
+                        onChange={handleChangeText}
                       />
                       <p className="style">Country:</p>
                       <input
@@ -148,7 +201,7 @@ const UpdateProfile = (props) => {
                         name="country"
                         placeholder={user.country}
                         value={infoUser.country}
-                        onChange={handleChange}
+                        onChange={handleChangeText}
                       />
                     </div>
                   </div>
@@ -167,15 +220,18 @@ const UpdateProfile = (props) => {
                       type="submit"
                       className="primary btn btn-secondary mb-4"
                     >
-                      Update Profile
+                      Update
                     </button>
-                    {error && (
-                      <p style={{ color: "teal", fontWeight: "530" }}>
-                        {error}
-                      </p>
-                    )}
+                    <Link to={`/profile`}>
+                      <button type="button" className="primary ghost">
+                        Back
+                      </button>
+                    </Link>
                   </div>
-                </form>
+                </form>{" "}
+                {error && (
+                  <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>
+                )}
               </div>
             </div>
           </div>
@@ -183,5 +239,5 @@ const UpdateProfile = (props) => {
       </div>
     </div>
   );
-};
+}
 export default UpdateProfile;

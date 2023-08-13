@@ -23,7 +23,7 @@ function successStatus(res) {
 }
 
 const authService = axios.create({
-  baseURL: `${SERVER_URL}/auth`,
+  baseURL: `${SERVER_URL}/api/auth`,
 });
 // console.log(authService.baseURL);
 

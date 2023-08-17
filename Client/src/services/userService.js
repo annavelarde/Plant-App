@@ -13,56 +13,58 @@ const userService = axios.create({
   baseURL: `${SERVER_URL}/api/user`,
 });
 
-// export function updateProfileImage(imageFile) {
-//   console.log("Updating profile image:", imageFile); // Add this line
-
-//   return userService
-//     .put("/updateProfileImage", imageFile, sendUser())
-//     .then(onSuccess("update-profile"))
-//     .catch(onError("update-profile"));
-// }
-
 export function updateProfileImage(imageFile) {
-  // console.log("Updating profile image:", imageFile);
-
-  // const formData = new FormData();
-  // formData.append("imageFile", imageFile);
+  console.log("VALIDATING IMAGEFILE 17 SERVER", imageFile);
 
   return userService
     .patch("/updateProfileImage", imageFile, sendUser())
-    .then((res) => {
-      console.log("Response: updadte-profile-image", res);
-      return res.data; // Return the data from the response
-    })
-    .catch((error) => {
-      console.error("[update-profile] - request failed", error);
-      throw error;
-    });
+    .then(onSuccess("update-profile"))
+    .catch(onError("update-profile"));
 }
 
-// export function updatingUser(userFromData) {
-//   console.log("Updating user:", userFromData); // Add this line
+//newone
+// export function updateProfileImage(imageFile) {
+//   // console.log("Updating profile image:", imageFile);
+
+//   // const formData = new FormData();
+//   // formData.append("imageFile", imageFile);
 
 //   return userService
-//     .put("/edit-profile", userFromData, sendUser())
-//     .then(onSuccess("updated-account"))
-//     .catch(onError("updated-account"));
+//     .patch("/updateProfileImage", imageFile, sendUser())
+//     .then((res) => {
+//       console.log("Response: updadte-profile-image", res);
+//       return res.data; // Return the data from the response
+//     })
+//     .catch((error) => {
+//       console.error("[update-profile] - request failed", error);
+//       throw error;
+//     });
 // }
 
 export function updatingUser(userData) {
-  console.log("Updating user:", userData);
+  console.log("VALIDATING IF USERDATA IS THERE 45", userData);
 
   return userService
     .patch("/edit", userData, sendUser())
-    .then((res) => {
-      console.log("Response:", res);
-      return res.data; // Return the data from the response
-    })
-    .catch((error) => {
-      console.error("[updated-account] - request failed", error);
-      throw error;
-    });
+    .then(onSuccess("updated-account"))
+    .catch(onError("updated-account"));
 }
+
+//NEWONE
+// export function updatingUser(userData) {
+//   console.log("Updating user:", userData);
+
+//   return userService
+//     .patch("/edit", userData, sendUser())
+//     .then((res) => {
+//       console.log("Response:", res);
+//       return res.data; // Return the data from the response
+//     })
+//     .catch((error) => {
+//       console.error("[updated-account] - request failed", error);
+//       throw error;
+//     });
+// }
 
 export function deleteUser(userId) {
   // console.log("👉 User to delete", { userId });

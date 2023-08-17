@@ -15,10 +15,12 @@ function UpdateProfile(props) {
     email: "",
     password: "",
     country: "",
+    profileImage: "",
   };
 
-  const [infoUser, setInfoUser] = useState(userForm);
+  const [editedUser, setEditedUser] = useState(userForm);
   const [chosenPicture, setChosenPicture] = useState("");
+
   const [inputKey, setInputKey] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -27,15 +29,14 @@ function UpdateProfile(props) {
   //User upload input
   const handleChangeText = (e) => {
     const { name, value } = e.target;
-    setInfoUser({ ...infoUser, [name]: value });
+    setEditedUser({ ...editedUser, [name]: value });
   };
 
   //Image upload input
   const handleImageInput = (e) => {
-    console.log(e.target.files[0]);
     const imageFile = e.target.files[0];
     setChosenPicture(imageFile);
-    console.log(imageFile);
+    // console.log("UPDATED-IMAGE--39", imageFile);
   };
 
   //updating userFromData
@@ -44,22 +45,25 @@ function UpdateProfile(props) {
     setIsLoading(true);
     setError(false);
 
-    updatingUser(infoUser)
+    updatingUser(editedUser)
       .then((res) => {
         if (!res.success) {
-          setError(res.data);
-          console.log(res.data);
+          setError("An error occurred while updating the user.", res.data);
+          console.log("FAILED UPDATING USER", res.data);
           setIsLoading(false);
           return;
         }
         setUser(res.data.user);
         setIsLoading(false);
       })
-      .catch((error) => {
-        console.error("Error updating user:", error);
-        setError("An error occurred while updating the user.");
+      .finally((params) => {
         setIsLoading(false);
       });
+    // .catch((error) => {
+    //   console.error("Error updating user:", error);
+    //   setError("An error occurred while updating the user.");
+    //   setIsLoading(false);
+    // });
   };
 
   // const handleProfilePicture = (e) => {
@@ -98,7 +102,7 @@ function UpdateProfile(props) {
   //     });
   // };
 
-  const handleProfilePicture = async (e) => {
+  const handleProfilePicture = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
@@ -109,25 +113,35 @@ function UpdateProfile(props) {
       return;
     }
 
-    try {
-      const formBody = new FormData();
-      formBody.append("imageFile", chosenPicture);
-      formBody.append("userId", userId);
+    const formBody = new FormData();
+    formBody.append("imageFile", chosenPicture);
+    formBody.append("userId", userId);
 
-      const response = await updateProfileImage(formBody);
+    // const response = await updateProfileImage(formBody);
+    updateProfileImage(formBody)
+      .then((response) => {
+        console.log("CLIENT-UPDATEDUSER-OK", response);
+        if (!response.success) {
+          setError("The Updated NEWUSER body failed!");
+        }
+        setUser({ ...user, imageFile: response.data.imageFile });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
 
-      if (response.success) {
-        setUser({ ...user, imageFile: response.imageFile }); // Update the user's profileImage
-        navigate(PATH.USER_PROFILE);
-      } else {
-        setError("Something went wrong while updating the profile image.");
-      }
-    } catch (error) {
-      console.error("[update-profile] - request failed", error);
-      setError("An error occurred while updating the profile image.");
-    } finally {
-      setIsLoading(false);
-    }
+    //   if (response.success) {
+    //     setUser({ ...user, imageFile: response.imageFile }); // Update the user's profileImage
+    //     navigate(PATH.USER_PROFILE);
+    //   } else {
+    //     setError("Something went wrong while updating the profile image.");
+    //   }
+    // } catch (error) {
+    //   console.error("[update-profile] - request failed", error);
+    //   setError("An error occurred while updating the profile image.");
+    // } finally {
+    //   setIsLoading(false);
+    // }
   };
 
   if (isLoading) {
@@ -157,53 +171,51 @@ function UpdateProfile(props) {
                 alt="User picture"
               />
               <div>
-                <form onSubmit={handleFromSubmit} method="POST">
+                <form onSubmit={handleFromSubmit}>
                   <div>
-                    <div>
-                      <input
-                        className="addPicture"
-                        key={inputKey}
-                        type="file"
-                        onChange={handleImageInput}
-                      />
-                      <button onClick={handleProfilePicture} type="submit">
-                        Update Image
-                      </button>
-                    </div>
-                    <div>
-                      <p className="style"> Name:</p>
-                      <input
-                        type="text"
-                        name="username"
-                        placeholder={user.username}
-                        value={infoUser.username}
-                        onChange={handleChangeText}
-                      />
-                      <p className="style">Email:</p>
-                      <input
-                        type="text"
-                        name="email"
-                        placeholder={user.email}
-                        value={infoUser.email}
-                        onChange={handleChangeText}
-                      />
-                      <p className="style">Password:</p>
-                      <input
-                        type="text"
-                        name="password"
-                        placeholder="Enter new password"
-                        value={infoUser.password}
-                        onChange={handleChangeText}
-                      />
-                      <p className="style">Country:</p>
-                      <input
-                        type="text"
-                        name="country"
-                        placeholder={user.country}
-                        value={infoUser.country}
-                        onChange={handleChangeText}
-                      />
-                    </div>
+                    <input
+                      className="addPicture"
+                      key={inputKey}
+                      type="file"
+                      onChange={handleImageInput}
+                    />
+                    <button type="submit" onClick={handleProfilePicture}>
+                      Update Image
+                    </button>
+                  </div>
+                  <div>
+                    <p className="style"> Name:</p>
+                    <input
+                      type="text"
+                      name="username"
+                      placeholder={user.username}
+                      value={editedUser.username}
+                      onChange={handleChangeText}
+                    />
+                    <p className="style">Email:</p>
+                    <input
+                      type="text"
+                      name="email"
+                      placeholder={user.email}
+                      value={editedUser.email}
+                      onChange={handleChangeText}
+                    />
+                    <p className="style">Password:</p>
+                    <input
+                      type="text"
+                      name="password"
+                      placeholder="Enter new password"
+                      value={editedUser.password}
+                      onChange={handleChangeText}
+                    />
+                    <p className="style">Country:</p>
+                    <input
+                      type="text"
+                      name="country"
+                      placeholder={user.country}
+                      value={editedUser.country}
+                      onChange={handleChangeText}
+                    />
                   </div>
                   <div className="skills">
                     <h6>Skills/Tags</h6>
@@ -228,7 +240,7 @@ function UpdateProfile(props) {
                       </button>
                     </Link>
                   </div>
-                </form>{" "}
+                </form>
                 {error && (
                   <p style={{ color: "teal", fontWeight: "530" }}>{error}</p>
                 )}

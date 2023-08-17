@@ -60,7 +60,6 @@ function SinglePost(props) {
           src={singlePost.imageUrl}
           alt={`${singlePost.username}picture`}
         />
-
         <h3 className="title-singlePost">Title.</h3>
         <p className="text-singlePost">{singlePost.title}</p>
         <h3 className="description-singlePost">Description.</h3>

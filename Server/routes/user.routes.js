@@ -12,9 +12,9 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 //updateUser
 router.patch("/edit", isLoggedIn, (req, res) => {
-  console.log("Received edit-profile request:", req.body); // Add this line
+  // console.log("Received edit-profile request:", req.body);
 
-  const { username, password, country, email } = req.body;
+  const { username, password, country, email, profileImage } = req.body;
   const { _id } = req.user; //identifying user
 
   if (username === "" || username.length < 3) {
@@ -45,7 +45,7 @@ router.patch("/edit", isLoggedIn, (req, res) => {
 
   User.findByIdAndUpdate(
     _id,
-    { username, password: hashedPassword, email, country },
+    { username, password: hashedPassword, email, country, profileImage },
     { new: true }
   )
     .then((updatedUser) => {
@@ -64,7 +64,7 @@ router.patch(
   upload.single("imageFile"),
   (req, res, next) => {
     const { userId } = req.body;
-    console.log("Received updateProfileImage request:", req.body); // Add this line
+    console.log("Received updateProfileImage request:", req.body);
 
     User.findByIdAndUpdate(userId, { imageFile: req.file.path }, { new: true })
       .then((updatedUser) => {
@@ -99,12 +99,12 @@ router.delete("/:userId", isLoggedIn, async (req, res) => {
 
   //deleting User
   const deleteUser = await Session.findById(userSessionId).populate("user");
-  console.log(" 👉 👉 / router.delete / aqyuuuuuiiiiiiiii:", deleteUser);
+  // console.log(" 👉 👉 / router.delete / aqyuuuuuiiiiiiiii:", deleteUser);
 
-  console.log(" 👉 👉 / router.delete / userId:", userId);
+  // console.log(" 👉 👉 / router.delete / userId:", userId);
 
   if (deleteUser.user._id.toString() !== userId) {
-    console.log("We are here--", deleteUser.user._id.toString());
+    // console.log("We are here--", deleteUser.user._id.toString());
     return res.status(404).json({
       errorMessage: "you are not allow to perform this action",
     });

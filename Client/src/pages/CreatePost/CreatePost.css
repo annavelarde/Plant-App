@@ -92,5 +92,7 @@ body {
 .btn-post-white.ghost {
     background-color: transparent;
     color:  #ffffff;
+    border-color: #ffffff;
+    margin-right: 15px;
   }
 

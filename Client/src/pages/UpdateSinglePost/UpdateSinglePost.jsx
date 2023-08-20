@@ -86,54 +86,52 @@ function UpdateSinglePost() {
   }
 
   return (
-    <div className="cardSinglePost">
-      <div className="group">
-        <div className="overlay-image">
-          <img
-            className="imageSinglePost"
-            height={"350px"}
-            src={imageUrl}
-            alt={formPicture.name ? formPicture.name : "Upload an Image"}
-          />
-        </div>
-        <div className="divEditContent">
-          <form onSubmit={handleSubmit}>
-            <h1 className="titleUpdateSingle">Update your Post</h1>
-            {error && (
-              <p style={{ color: "teal", fontWeight: "830" }}>{error}</p>
-            )}
-            <div className="fileInputLabel">
-              <label htmlFor="fileInput">
-                <input
-                  className="fileInput"
-                  type="file"
-                  id="fileInput"
-                  onChange={handleImageInput}
-                  name="post-image"
-                />
-              </label>
-            </div>
-            <div>
-              <p>Post Title:</p>
+    <div className="cardSinglePostEdit">
+      <div className="overlay-image">
+        <img
+          className="imageSinglePostEdit"
+          height={"350px"}
+          src={imageUrl}
+          alt={formPicture.name ? formPicture.name : "Upload an Image"}
+        />
+      </div>
+      <div className="divEditContent">
+        <form onSubmit={handleSubmit}>
+          <h1 className="titleUpdateSingle">Update post</h1>
+          {error && <p style={{ color: "teal", fontWeight: "830" }}>{error}</p>}
+          <div className="fileInputLabel">
+            <label htmlFor="fileInput">
               <input
-                className="inputFormTitle"
-                type="text"
-                placeholder={title}
-                onChange={handleTextInput}
-                name="title"
-                value={title}
-              />{" "}
-              <p>Post Description:</p>
-              <textarea
-                className="inputFormTextarea"
-                name="description"
-                value={description}
-                type="text"
-                placeholder={description}
-                onChange={handleTextInput}
-              ></textarea>
-            </div>
-            <button type="submit" className="primary ghost">
+                className="fileInput"
+                type="file"
+                id="fileInput"
+                onChange={handleImageInput}
+                name="post-image"
+              />
+            </label>
+          </div>
+          <div>
+            <p>Post Title:</p>
+            <input
+              className="inputFormTitle"
+              type="text"
+              placeholder={title}
+              onChange={handleTextInput}
+              name="title"
+              value={title}
+            />{" "}
+            <p>Post Description:</p>
+            <textarea
+              className="inputFormTextarea"
+              name="description"
+              value={description}
+              type="text"
+              placeholder={description}
+              onChange={handleTextInput}
+            ></textarea>
+          </div>
+          <div className="buttons-single-edit">
+            <button type="submit" className="primary ghost publish-btn">
               Publish
             </button>
             <Link to={`/`}>
@@ -141,8 +139,8 @@ function UpdateSinglePost() {
                 Back
               </button>
             </Link>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );

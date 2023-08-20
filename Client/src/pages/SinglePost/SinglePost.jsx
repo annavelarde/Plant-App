@@ -8,10 +8,13 @@ import "./SinglePost.css";
 function SinglePost(props) {
   const { postId } = useParams();
   const { user } = props;
+  // console.log("post here 11", post);
+  console.log(props);
+  // console.log(useParams);
 
   const userId = user ? user._id : null;
-  // console.log(" 👉 👉 / SinglePost / user:", user);
-  // console.log(" 👉 👉 / SinglePost / postId", postId);
+  console.log(" 👉 👉 / SinglePost / user:", user);
+  console.log(" 👉 👉 / SinglePost / postId", postId);
   // console.log(userId);
 
   const [singlePost, setSinglePost] = useState({});
@@ -20,7 +23,7 @@ function SinglePost(props) {
   useEffect(() => {
     getSinglePost(postId)
       .then((res) => {
-        // console.log(" 👉 👉 / useEffect / res", res.data);
+        console.log(" 👉 👉 / useEffect / res", res.data);
         setSinglePost(res.data);
       })
       .catch((err) => {
@@ -52,52 +55,107 @@ function SinglePost(props) {
   };
 
   return (
+    //   <div className="cardSinglePost">
+    //     <div className="group">
+    //       <img
+    //         width="100%"
+    //         className="imageSinglePost"
+    //         src={singlePost.imageUrl}
+    //         alt={`${singlePost.username}picture`}
+    //       />
+    //       <h3 className="title-singlePost">Title.</h3>
+    //       <p className="text-singlePost">{singlePost.title}</p>
+    //       <h3 className="description-singlePost">Description.</h3>
+    //       <p className="text-singlePost">{singlePost.description}</p>
+    //       <div className="buttons-single">
+    //         {props.user &&
+    //         singlePost.author &&
+    //         singlePost.author._id === props.user._id ? (
+    //           <>
+    //             <Link to={`/posts/edit/${postId}`}>
+    //               <button
+    //                 type="button"
+    //                 className="primary btn btn-secondary mb-4"
+    //               >
+    //                 Edit
+    //               </button>
+    //             </Link>
+    //             <Link>
+    //               <button
+    //                 type="button"
+    //                 onClick={deleteAlert}
+    //                 className="primary ghost"
+    //               >
+    //                 Delete
+    //               </button>
+    //             </Link>
+    //           </>
+    //         ) : (
+    //           <>
+    //             <Link to={`/`}>
+    //               <button
+    //                 type="button"
+    //                 className="primary btn btn-secondary mb-4"
+    //               >
+    //                 Back
+    //               </button>
+    //             </Link>
+    //           </>
+    //         )}
+    //       </div>
+    //     </div>
+    //   </div>
+    // );
     <div className="cardSinglePost">
-      <div className="group">
+      <div className="imagePostDiv">
         <img
           width="100%"
           className="imageSinglePost"
           src={singlePost.imageUrl}
-          alt={`${singlePost.username}picture`}
+          alt={`${singlePost.username} picture`}
         />
-        <h3 className="title-singlePost">Title.</h3>
+        <div className="detailsPost">
+          <h6>
+            <i>Author: {user.username}</i>
+          </h6>
+          <h6>
+            <i>Publish: {singlePost.createdAt} </i>
+          </h6>
+          <h6>
+            <i>Country: {user.country} </i>
+          </h6>
+        </div>
+      </div>
+
+      <div className="content">
+        <h3 className="title-singlePost">Title</h3>
         <p className="text-singlePost">{singlePost.title}</p>
-        <h3 className="description-singlePost">Description.</h3>
+        <h3 className="description-singlePost">Description</h3>
         <p className="text-singlePost">{singlePost.description}</p>
         <div className="buttons-single">
           {props.user &&
           singlePost.author &&
           singlePost.author._id === props.user._id ? (
             <>
-              <Link to={`/posts/edit/${postId}`}>
-                <button
-                  type="button"
-                  className="primary btn btn-secondary mb-4"
-                >
+              <Link to={`/posts/edit/${postId}`} className="button-link">
+                <button type="button" className="primary btn btn-secondary">
                   Edit
                 </button>
               </Link>
-              <Link>
-                <button
-                  type="button"
-                  onClick={deleteAlert}
-                  className="primary ghost"
-                >
-                  Delete
-                </button>
-              </Link>
+              <button
+                type="button"
+                onClick={deleteAlert}
+                className="primary ghost"
+              >
+                Delete
+              </button>
             </>
           ) : (
-            <>
-              <Link to={`/`}>
-                <button
-                  type="button"
-                  className="primary btn btn-secondary mb-4"
-                >
-                  Back
-                </button>
-              </Link>
-            </>
+            <Link to={`/`} className="button-link">
+              <button type="button" className="primary btn btn-secondary">
+                Back
+              </button>
+            </Link>
           )}
         </div>
       </div>

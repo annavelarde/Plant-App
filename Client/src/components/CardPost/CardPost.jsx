@@ -2,7 +2,7 @@ import React from "react";
 import "./CardPost.css";
 import { Link } from "react-router-dom";
 
-export default function CardPost({ post }) {
+export default function CardPost({ post, user }) {
   // console.log(" 👉 👉 / CardPost / post:", post);
   return (
     <div className="a-box">
@@ -14,8 +14,11 @@ export default function CardPost({ post }) {
         </div>
       </div>
       <div className="text-container">
-        <h4>Title.</h4>
-        <h4 className="titlepostcard">{post.title}</h4>
+        <h5 className="titlepostcard">{post.title}</h5>
+        <h5 className="userpostcard">
+          username: {user.username} <br />
+          {post.createdAt}
+        </h5>
         <div className="link">
           <Link to={`posts/${post._id}`} className="authLink">
             <button className="b">View More</button>

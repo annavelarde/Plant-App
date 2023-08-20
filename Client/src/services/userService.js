@@ -17,7 +17,7 @@ export function updateProfileImage(imageFile) {
   console.log("VALIDATING IMAGEFILE 17 SERVER", imageFile);
 
   return userService
-    .patch("/updateProfileImage", imageFile, sendUser())
+    .put("/updateProfileImage", imageFile, sendUser())
     .then(onSuccess("update-profile"))
     .catch(onError("update-profile"));
 }

@@ -34,8 +34,8 @@ function UpdateProfile(props) {
 
   //Image upload input
   const handleImageInput = (e) => {
-    const imageFile = e.target.files[0];
-    setChosenPicture(imageFile);
+    const profileImage = e.target.files[0];
+    setChosenPicture(profileImage);
     // console.log("UPDATED-IMAGE--39", imageFile);
   };
 
@@ -55,6 +55,7 @@ function UpdateProfile(props) {
         }
         setUser(res.data.user);
         setIsLoading(false);
+        navigate(PATH.USER_PROFILE);
       })
       .finally((params) => {
         setIsLoading(false);
@@ -114,7 +115,7 @@ function UpdateProfile(props) {
     }
 
     const formBody = new FormData();
-    formBody.append("imageFile", chosenPicture);
+    formBody.append("profileImage", chosenPicture);
     formBody.append("userId", userId);
 
     // const response = await updateProfileImage(formBody);
@@ -124,7 +125,8 @@ function UpdateProfile(props) {
         if (!response.success) {
           setError("The Updated NEWUSER body failed!");
         }
-        setUser({ ...user, imageFile: response.data.imageFile });
+        setUser({ ...user, profileImage: response.data.profileImage });
+        navigate(PATH.USER_PROFILE);
       })
       .finally(() => {
         setIsLoading(false);
@@ -164,11 +166,11 @@ function UpdateProfile(props) {
                 width="35%"
                 height="auto"
                 src={
-                  user.imageFile
-                    ? user.imageFile
+                  user.profileImage
+                    ? user.profileImage
                     : "/images/Profile-PNG-Pic.png"
                 }
-                alt="User picture"
+                alt={"User picture"}
               />
               <div>
                 <form onSubmit={handleFromSubmit}>

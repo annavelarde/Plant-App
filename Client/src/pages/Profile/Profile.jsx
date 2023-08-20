@@ -9,7 +9,7 @@ export default function Profile(props) {
   const { user, setUser } = props;
 
   // console.log(" 👉 👉 / Profile / setUser:", setUser);
-  // console.log(" 👉 👉 / Profile / userID:", user._id);
+  console.log(" 👉 👉 / Profile / userID:", user._id);
   const [error, setError] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -61,8 +61,8 @@ export default function Profile(props) {
           className="round"
           width="35%"
           height="auto"
-          src={user.imageFile ? user.imageFile : "/images/Profile-PNG-Pic.png"}
-          alt="user image"
+          src={user.profileImage}
+          alt="User photo profile"
         />
         <h3 className="user">
           {user.username} | {user.country}

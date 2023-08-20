@@ -58,7 +58,7 @@ router.patch("/edit", isLoggedIn, (req, res) => {
 });
 
 //updating image
-router.put(
+router.post(
   "/updateProfileImage",
   isLoggedIn,
   upload.single("profileImage"),
@@ -71,7 +71,6 @@ router.put(
       { profileImage: req.file.path },
       { new: true }
     )
-
       .then((updatedUser) => {
         console.log("getting userID? 72", userId);
         console.log("getting req file path 73", req.file.path);
@@ -79,7 +78,7 @@ router.put(
           success: true,
           imageFile: updatedUser.profileImage,
         });
-        console.log("78 updateUser.imagefile", updatedUser.profileImage);
+        console.log("78 updateUser.profileImage", updatedUser.profileImage);
       })
       .catch((err) => {
         res.json({

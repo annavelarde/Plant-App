@@ -32,13 +32,6 @@ function UpdateProfile(props) {
     setEditedUser({ ...editedUser, [name]: value });
   };
 
-  //Image upload input
-  const handleImageInput = (e) => {
-    const profileImage = e.target.files[0];
-    setChosenPicture(profileImage);
-    // console.log("UPDATED-IMAGE--39", imageFile);
-  };
-
   //updating userFromData
   const handleFromSubmit = (e) => {
     e.preventDefault();
@@ -57,56 +50,15 @@ function UpdateProfile(props) {
         setIsLoading(false);
         navigate(PATH.USER_PROFILE);
       })
-      .finally((params) => {
+      .finally(() => {
         setIsLoading(false);
       });
-    // .catch((error) => {
-    //   console.error("Error updating user:", error);
-    //   setError("An error occurred while updating the user.");
-    //   setIsLoading(false);
-    // });
   };
-
-  // const handleProfilePicture = (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   setError("");
-
-  //   if (!chosenPicture) {
-  //     setError("Don't forget to update your profile image!");
-  //     setIsLoading(false);
-  //     return;
-  //   }
-
-  //   const formBody = new FormData();
-  //   formBody.append("imageFile", chosenPicture);
-  //   formBody.append("userId", userId);
-
-  //   console.log("FormBody 74", formBody);
-
-  //   updateProfileImage(formBody)
-  //     .then((res) => {
-  //       console.log(res);
-  //       if (!res.success) {
-  //         setError("Something went wrong while updating the profile image.");
-  //       } else {
-  //         setUser({ ...user, imageFile: res.data.imageFile }); // Update the user's profileImage
-  //         navigate(PATH.HOME_PAGE);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("[update-profile] - request failed", error);
-  //       setError("An error occurred while updating the profile image.");
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // };
 
   const handleProfilePicture = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError("");
+    setError(false);
 
     if (!chosenPicture) {
       setError("Don't forget to update your profile image!");
@@ -114,36 +66,29 @@ function UpdateProfile(props) {
       return;
     }
 
-    const formBody = new FormData();
+    const formBody = new window.FormData();
     formBody.append("profileImage", chosenPicture);
     formBody.append("userId", userId);
 
     // const response = await updateProfileImage(formBody);
-    updateProfileImage(formBody)
-      .then((response) => {
-        console.log("CLIENT-UPDATEDUSER-OK", response);
-        if (!response.success) {
-          setError("The Updated NEWUSER body failed!");
-        }
-        setUser({ ...user, profileImage: response.data.profileImage });
-        navigate(PATH.USER_PROFILE);
-      })
-      .finally(() => {
+    updateProfileImage(formBody).then((response) => {
+      console.log("CLIENT-UPDATEDUSER-OK", response);
+      if (!response.success) {
+        setError("The Updated NEWUSER body failed!");
         setIsLoading(false);
-      });
+        return;
+      }
+      setUser({ ...user, profileImage: response.data.profileImage });
+      setIsLoading(false);
+      setInputKey(Date.now());
+    });
+  };
 
-    //   if (response.success) {
-    //     setUser({ ...user, imageFile: response.imageFile }); // Update the user's profileImage
-    //     navigate(PATH.USER_PROFILE);
-    //   } else {
-    //     setError("Something went wrong while updating the profile image.");
-    //   }
-    // } catch (error) {
-    //   console.error("[update-profile] - request failed", error);
-    //   setError("An error occurred while updating the profile image.");
-    // } finally {
-    //   setIsLoading(false);
-    // }
+  //Image upload input
+  const handleImageInput = (e) => {
+    const imageFromInput = e.target.files[0];
+    setChosenPicture(imageFromInput);
+    // console.log("UPDATED-IMAGE--39", imageFile);
   };
 
   if (isLoading) {
@@ -166,14 +111,14 @@ function UpdateProfile(props) {
                 width="35%"
                 height="auto"
                 src={
-                  user.profileImage
-                    ? user.profileImage
-                    : "/images/Profile-PNG-Pic.png"
+                  isLoading
+                    ? "https://www.vuescript.com/wp-content/uploads/2018/11/Show-Loader-During-Image-Loading-vue-load-image.png"
+                    : user.profileImage
                 }
                 alt={"User picture"}
               />
               <div>
-                <form onSubmit={handleFromSubmit}>
+                <form onSubmit={handleProfilePicture} action="POST">
                   <div>
                     <input
                       className="addPicture"
@@ -181,10 +126,10 @@ function UpdateProfile(props) {
                       type="file"
                       onChange={handleImageInput}
                     />
-                    <button type="submit" onClick={handleProfilePicture}>
-                      Update Image
-                    </button>
+                    <button type="submit">Update Image</button>
                   </div>
+                </form>
+                <form onSubmit={handleFromSubmit}>
                   <div>
                     <p className="style"> Name:</p>
                     <input

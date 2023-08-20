@@ -13,11 +13,11 @@ const userService = axios.create({
   baseURL: `${SERVER_URL}/api/user`,
 });
 
-export function updateProfileImage(imageFile) {
-  console.log("VALIDATING IMAGEFILE 17 SERVER", imageFile);
+export function updateProfileImage(profileImage) {
+  console.log("VALIDATING IMAGEFILE 17 SERVER", profileImage);
 
   return userService
-    .put("/updateProfileImage", imageFile, sendUser())
+    .post("/updateProfileImage", profileImage, sendUser())
     .then(onSuccess("update-profile"))
     .catch(onError("update-profile"));
 }

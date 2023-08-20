@@ -61,7 +61,11 @@ export default function Profile(props) {
           className="round"
           width="35%"
           height="auto"
-          src={user.profileImage}
+          src={
+            isLoading
+              ? "https://www.vuescript.com/wp-content/uploads/2018/11/Show-Loader-During-Image-Loading-vue-load-image.png"
+              : user.profileImage
+          }
           alt="User photo profile"
         />
         <h3 className="user">

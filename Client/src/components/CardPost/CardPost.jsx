@@ -15,10 +15,7 @@ export default function CardPost({ post, user }) {
       </div>
       <div className="text-container">
         <h5 className="titlepostcard">{post.title}</h5>
-        <h5 className="userpostcard">
-          username: {user.username} <br />
-          {post.createdAt}
-        </h5>
+        <h5 className="userpostcard">{post.createdAt}</h5>
         <div className="link">
           <Link to={`posts/${post._id}`} className="authLink">
             <button className="b">View More</button>

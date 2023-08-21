@@ -110,7 +110,7 @@ function UpdateSinglePost() {
               />
             </label>
           </div>
-          <div>
+          <div className="paddingText">
             <p>Post Title:</p>
             <input
               className="inputFormTitle"

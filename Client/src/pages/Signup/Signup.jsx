@@ -111,7 +111,7 @@ export default function Signup({ authenticate }) {
         />
         {error && (
           <div className="error-signup">
-            <p>{error.message} Please, check if all fields are correct.</p>
+            <p>Please, check if all fields are correct.</p>
           </div>
         )}
         <button

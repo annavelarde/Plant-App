@@ -51,9 +51,8 @@ export default function Signup({ authenticate }) {
       <form onSubmit={handleFormSubmission} className="form-signup">
         <h4 className="h4-style-signup">Join Plant Weblog!</h4>
         <h6 className="h6-style-signup">
-          First, let's create your user account
+          Let's create your user account first
         </h6>
-
         <label className="label-signup" htmlFor="input-username">
           Username
         </label>

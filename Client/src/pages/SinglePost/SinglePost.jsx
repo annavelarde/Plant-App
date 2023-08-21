@@ -114,19 +114,27 @@ function SinglePost(props) {
           src={singlePost.imageUrl}
           alt={`${singlePost.username} picture`}
         />
-        <div className="detailsPost">
-          <h6>
-            <i>Author: {user.username}</i>
-          </h6>
-          <h6>
-            <i>Publish: {singlePost.createdAt} </i>
-          </h6>
-          <h6>
-            <i>Country: {user.country} </i>
-          </h6>
-        </div>
-      </div>
 
+        {props.user &&
+        singlePost.author &&
+        singlePost.author._id === props.user._id ? (
+          <>
+            <div className="detailsPost">
+              <h6>
+                <i>Author: {user.username}</i>
+              </h6>
+              <h6>
+                <i>Publish: {singlePost.createdAt} </i>
+              </h6>
+              <h6>
+                <i>Country: {user.country} </i>
+              </h6>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
       <div className="content">
         <h3 className="title-singlePost">Title</h3>
         <p className="text-singlePost">{singlePost.title}</p>

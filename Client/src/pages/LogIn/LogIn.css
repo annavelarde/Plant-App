@@ -43,6 +43,7 @@ width: 100px;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
+
 }
 .form-login h2 {
   font-size: 35px;
@@ -109,9 +110,10 @@ width: 100px;
 	background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  position:absolute;
+  position:fixed;
+	display:flex;
   width:100%;
-  height:100vh; 
+  min-height:100vh; 
   /* border-color: #ff512f; */
 }
 

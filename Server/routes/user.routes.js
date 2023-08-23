@@ -76,7 +76,7 @@ router.post(
         console.log("getting req file path 73", req.file.path);
         res.status(200).json({
           success: true,
-          imageFile: updatedUser.profileImage,
+          profileImage: updatedUser.profileImage,
         });
         console.log("78 updateUser.profileImage", updatedUser.profileImage);
       })

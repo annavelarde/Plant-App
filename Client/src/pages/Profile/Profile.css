@@ -22,6 +22,12 @@
   position: fixed;
   /* border: 5px solid rgb(0, 0, 0); */
 }
+.round{
+	border-radius: 50%;
+	width: 100px;
+	height: 120px;
+	object-fit:cover;
+}
 
 .card-body {
 	font-family: Montserrat, sans-serif;

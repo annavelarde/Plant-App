@@ -59,8 +59,8 @@ export default function Profile(props) {
       <div className="card-container">
         <img
           className="round"
-          width="35%"
-          height="auto"
+          // width="35%"
+          // height="auto"
           src={
             isLoading
               ? "https://www.vuescript.com/wp-content/uploads/2018/11/Show-Loader-During-Image-Loading-vue-load-image.png"

@@ -69,10 +69,10 @@ function UpdateProfile(props) {
     const formBody = new window.FormData();
     formBody.append("profileImage", chosenPicture);
     formBody.append("userId", userId);
-
+    console.log("IMAGE STATE BEFORE updating", chosenPicture);
     // const response = await updateProfileImage(formBody);
     updateProfileImage(formBody).then((response) => {
-      console.log("CLIENT-UPDATEDUSER-OK", response);
+      console.log("Imahge Returned ok from DB-->", response);
       if (!response.success) {
         setError("The Updated NEWUSER body failed!");
         setIsLoading(false);
